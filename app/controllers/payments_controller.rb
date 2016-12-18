@@ -5,6 +5,7 @@ class PaymentsController < ApplicationController
   # GET /payments.json
   def index
     @payments = Payment.all
+    @payment = Payment.new
   end
 
   # GET /payments/1
@@ -28,7 +29,8 @@ class PaymentsController < ApplicationController
 
     respond_to do |format|
       if @payment.save
-        format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
+        format.html { redirect_to payments_path, notice: 'Payment was successfully created.' }
+        format.js {}
         format.json { render :show, status: :created, location: @payment }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class PaymentsController < ApplicationController
   def update
     respond_to do |format|
       if @payment.update(payment_params)
-        format.html { redirect_to @payment, notice: 'Payment was successfully updated.' }
+        format.html { redirect_to payments_path, notice: 'Payment was successfully updated.' }
         format.json { render :show, status: :ok, location: @payment }
       else
         format.html { render :edit }
@@ -69,6 +71,6 @@ class PaymentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def payment_params
-      params.require(:payment).permit(:client_address, :client_name, :client_payment, :client_description)
+      params.require(:payment).permit(:client_address, :client_name, :client_payment, :client_description, :client_new_connection)
     end
 end

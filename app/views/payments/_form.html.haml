@@ -1,4 +1,4 @@
-.form-horizontal
+.form.form-horizontal.form-group-sm
   = simple_form_for(@payment, wrapper: :inline_form) do |f|
     = f.error_notification
 
@@ -11,6 +11,8 @@
       .form-inputs
         .panel-body
           = f.input :client_description, label: 'Описание:', placeholder: 'Описание', as: :text
+          = f.input :client_new_connection, label: 'Новое подключение', as: :boolean
       .form-actions
         .panel-footer
-          = f.submit 'Подтвердить'
+          .btn
+            = f.button :submit, 'Подтвердить', class: 'btn btn-default btn-group-justified'

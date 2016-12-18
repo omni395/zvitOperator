@@ -1,5 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe Payment, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  before { @payment = FactoryGirl.create(:payment) }
+  # Общая сумма пополнения за день
+  # Чекбокс новое ли это подклюение или нет
+
+
+  # Адрес, фамилия, сумма пополнения и описание - проверить добавляется ли в базу
+  describe 'client_address, client_name, client_payment and client_description adding to base' do
+
+  end
+
+  # Непредвиденные расходы (описание и сумма)
+  # Разбивка по затратам на новое подключение
+  # Если новое подключение - указывается метраж кабеля и количество муфт и клипс
+  # Нужно считать общую сумму пополнения за неделю (даты - текущая и текущая минус 7 дней)
+  # От общей суммы пополнения за неделю считать 5% и отнять процент от общей суммы
 end

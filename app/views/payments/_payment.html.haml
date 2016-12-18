@@ -1,0 +1,19 @@
+%table.table.table-condensed.table-hover
+  %thead
+    %tr
+      %th Адрес клиента
+      %th ФИО клиента
+      %th Сумма платежа
+      %th
+      %th
+      %th
+
+  %tbody
+    - @payments.each do |payment|
+      %tr
+        %td= payment.client_address
+        %td= payment.client_name
+        %td= payment.client_payment
+        %td= link_to 'Детали', payment
+        %td= link_to 'Редактировать', edit_payment_path(payment)
+        %td= link_to 'Удалить', payment, :method => :delete, :data => { :confirm => 'Точно?.. Уверен?..' }
