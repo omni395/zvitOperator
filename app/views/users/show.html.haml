@@ -1,0 +1,30 @@
+.row
+  .col-md-6
+    .avatar.panel.panel-success
+  .col-md-6
+    .well#user
+      %table.table
+        %tr
+          %th
+            User name:
+          %td
+            = @user.user_name
+        %tr
+          %th
+            Email:
+          %td
+            = @user.email
+        %tr
+          %th
+            User role:
+          %td
+            = @user.role.name
+        %tr
+          %th
+            User full name:
+          %td
+            = user_full_name
+        %tr
+          %th
+          %td{:align => 'right'}
+            = link_to "Edit this block", edit_user_registration_path

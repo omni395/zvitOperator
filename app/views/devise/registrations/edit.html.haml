@@ -1,0 +1,72 @@
+%h3
+  Edit #{resource_name.to_s.humanize}
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+  = f.error_notification
+  .form-inputs
+    .panel-group#accordion
+      .panel.panel-default
+        .panel-heading
+          .panel-title
+            %a{:role => "button", :href => "#main_user",
+              "data-toggle" => "collapse",
+              "data-parent" => "#accordion",
+              "aria-expanded" => "true",
+              "aria-controls" => "main_user"}
+              Username and Email
+        .panel-collapse.collapse.in#main_user
+          .panel-body
+            .form-group-sm
+              .col-md-6
+                = f.input :user_name
+              .col-md-6
+                = f.input :email, required: true, autofocus: true
+                - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+                  %p
+                    Currently waiting confirmation for: #{resource.unconfirmed_email}
+
+        .panel-heading
+          .panel-title
+            %a{:role => "button", :href => "#change_user_password",
+              "data-toggle" => "collapse",
+              "data-parent" => "#accordion",
+              "aria-expanded" => "false",
+              "aria-controls" => "change_user_password"}
+              Change Password
+        .panel-collapse.collapse#change_user_password
+          .panel-body
+            .form-group-sm#new_user_password
+              .col-md-6
+                = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false
+              .col-md-6
+                = f.input :password_confirmation, required: false
+
+        .panel-heading
+          .panel-title
+            %a{:role => "button", :href => "#about_user",
+              "data-toggle" => "collapse",
+              "data-parent" => "#accordion",
+              "aria-expanded" => "false",
+              "aria-controls" => "about_user"}
+              User's full name
+        .panel-collapse.collapse#about_user
+          .panel-body
+            .form-group-sm
+              .col-md-4
+                = f.input :first_name
+              .col-md-4
+                = f.input :middle_name
+              .col-md-4
+                = f.input :last_name
+
+    %p.row
+      .col-md-9
+        .form-group-sm#current_user_password
+          = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
+          .form-actions#button
+            = f.button :submit, "Update"
+      .col-md-3
+        .well
+          %h4 Cancel my account
+          %p
+            Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
+= link_to "Back", :back
