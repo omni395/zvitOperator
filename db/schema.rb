@@ -10,18 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161218122946) do
+ActiveRecord::Schema.define(version: 20161218211653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "material_payments", force: :cascade do |t|
+    t.integer  "material_id"
+    t.integer  "payment_id"
+    t.decimal  "quantity"
+    t.decimal  "total_material_price"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["material_id"], name: "index_material_payments_on_material_id", using: :btree
+    t.index ["payment_id"], name: "index_material_payments_on_payment_id", using: :btree
+  end
+
+  create_table "materials", force: :cascade do |t|
+    t.string   "material"
+    t.decimal  "material_price"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "payments", force: :cascade do |t|
     t.string   "client_address"
     t.string   "client_name"
     t.decimal  "client_payment"
     t.string   "client_description"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.boolean  "client_new_connection"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -53,5 +72,7 @@ ActiveRecord::Schema.define(version: 20161218122946) do
     t.index ["role_id"], name: "index_users_on_role_id", using: :btree
   end
 
+  add_foreign_key "material_payments", "materials"
+  add_foreign_key "material_payments", "payments"
   add_foreign_key "users", "roles"
 end

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Material:
+  = @material.material
+%p
+  %b Material price:
+  = @material.material_price
+
+= link_to 'Edit', edit_material_path(@material)
+\|
+= link_to 'Back', materials_path
