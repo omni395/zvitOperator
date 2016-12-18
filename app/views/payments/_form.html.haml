@@ -1,0 +1,16 @@
+.form-horizontal
+  = simple_form_for(@payment, wrapper: :inline_form) do |f|
+    = f.error_notification
+
+    .panel.well
+      .form-inputs
+        .panel-body
+          = f.input :client_address, label: 'Адрес:', placeholder: 'Адрес (обязательно)'
+          = f.input :client_name, label: 'ФИО клиента:', placeholder: 'ФИО клиента'
+          = f.input :client_payment, label: 'Сумма платежа:', placeholder: 'Сумма (обязательно)'
+      .form-inputs
+        .panel-body
+          = f.input :client_description, label: 'Описание:', placeholder: 'Описание', as: :text
+      .form-actions
+        .panel-footer
+          = f.submit 'Подтвердить'

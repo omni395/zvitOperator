@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Адрес клиента:
+  = @payment.client_address
+%p
+  %b ФО клиента:
+  = @payment.client_name
+%p
+  %b Сумма пополнения:
+  = @payment.client_payment
+%p
+  %b Описание:
+  = @payment.client_description
+
+= link_to 'Редактировать', edit_payment_path(@payment)
+\|
+= link_to 'Назад', payments_path
