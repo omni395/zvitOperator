@@ -1,12 +1,12 @@
 %p#notice= notice
 
 %p
-  %b Material:
+  %b Названиие материала:
   = @material.material
 %p
-  %b Material price:
+  %b Стоимость за единицу (метр):
   = @material.material_price
 
-= link_to 'Edit', edit_material_path(@material)
+= link_to 'Редактировать', edit_material_path(@material)
 \|
-= link_to 'Back', materials_path
+= link_to 'Назад', materials_path

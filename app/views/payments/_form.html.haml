@@ -5,13 +5,32 @@
     .panel.well
       .form-inputs
         .panel-body
-          = f.input :client_address, label: 'Адрес:', placeholder: 'Адрес (обязательно)'
-          = f.input :client_name, label: 'ФИО клиента:', placeholder: 'ФИО клиента'
-          = f.input :client_payment, label: 'Сумма платежа:', placeholder: 'Сумма (обязательно)'
+          .row
+            .col-md-4
+              = f.input :client_address, label: 'Адрес:', placeholder: 'Адрес (обязательно)'
+            .col-md-4
+              = f.input :client_name, label: 'ФИО клиента:', placeholder: 'ФИО клиента'
+            .col-md-4
+              = f.input :client_payment, label: 'Сумма платежа:', placeholder: 'Сумма (обязательно)'
+          .row
+            .col-md-12
+              = f.input :client_description, label: 'Описание:', placeholder: 'Описание', as: :text
       .form-inputs
         .panel-body
-          = f.input :client_description, label: 'Описание:', placeholder: 'Описание', as: :text
-          = f.input :client_new_connection, label: 'Новое подключение', as: :boolean
+
+          = f.input :client_new_connection, label: 'Новое подключение?', as: :boolean, html: { id: 'client_new_connection' }
+      .form-inputs#materials
+        .panel-body
+          .row
+            .col-md-6
+              = f.association :materials, label: 'Материалы:',
+                label_method: :material,
+                value_method: :id,
+                collection: Material.all,
+                as: :hidden
+            .col-md-6
+              = f.simple_fields_for :material_payment do |mp|
+                = mp.input :quantity
       .form-actions
         .panel-footer
           .btn

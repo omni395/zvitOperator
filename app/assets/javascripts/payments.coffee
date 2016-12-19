@@ -3,13 +3,27 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
   $ ->
-    $('#new_payment_form, #cancel_payment').css('display', 'none')
-    $('#add_payment').on 'click', ->
-      $('#title_payment').html('<h2>Добавить платеж</h2>')
-      $(this).css('display', 'none')
-      $('#new_payment_form, #cancel_payment').css('display', 'block')
+    #
+    # Форма добавления нового платежа
+    #
+    # Изначаньно форма и кнопка отмены скрыты
+    $('#payment, #cancel_payment').hide()
 
+    # Показывает форму добавления платежа и кнопку отмены. Кнопка добавленияя платежа скрывется
+    $('#add_payment').on 'click', ->
+      $('div #payment').slideDown()
+      $('#cancel_payment').slideDown()
+      $('#add_payment').slideUp()
+
+    # Скрывает форму добавления платежа и кнопку отмены. Кнопка добавления платежа отображается
     $('#cancel_payment').on 'click', ->
-      $('#add_payment').css('display', 'block')
-      $('#cancel_payment, #new_payment_form').css('display', 'none')
-      $('#title_payment').html('<h2>Список платежей</h2>')
+      $('div #payment').slideUp('slow')
+      $('#cancel_payment').slideUp()
+      $('#add_payment').slideDown()
+
+    # Показывает дополнительные поля формы, если создается новое подключение
+    $('#payment_client_new_connection').on 'change', ->
+      if $(this).is(':checked')
+        console.log('1')
+      else
+        console.log('2')
