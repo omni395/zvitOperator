@@ -5,14 +5,16 @@ class PaymentsController < ApplicationController
   # GET /payments.json
   def index
     @payments = Payment.all
+    @materials = Material.all
+
     @payment = Payment.new
-    @payment.materials.build
-    #@materials = Material.all
+    @payment.material_payments.build
   end
 
   # GET /payments/1
   # GET /payments/1.json
   def show
+    @material_payments = MaterialPayment.where(payment_id: @payment)
   end
 
   # GET /payments/new
@@ -28,7 +30,6 @@ class PaymentsController < ApplicationController
   # POST /payments.json
   def create
     @payment = Payment.new(payment_params)
-
     respond_to do |format|
       if @payment.save
         format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
@@ -43,6 +44,9 @@ class PaymentsController < ApplicationController
   # PATCH/PUT /payments/1
   # PATCH/PUT /payments/1.json
   def update
+    #@payment = Payment.find(params[:id])
+    #@payment.material_payments.update_all(payment_params)
+
     respond_to do |format|
       if @payment.update(payment_params)
         format.html { redirect_to @payment, notice: 'Payment was successfully updated.' }
@@ -72,7 +76,12 @@ class PaymentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def payment_params
-      params.require(:payment).permit(:client_address, :client_name, :client_payment, :client_description, :client_new_connection,
-                                      :material_payments_attributes => [:material_id, :payment_id, :quantity, :total_material_price])
+      params.require(:payment).permit(:client_address,
+                                      :client_name,
+                                      :client_payment,
+                                      :client_description,
+                                      :client_new_connection,
+                                      :material_ids => [],
+                                      :material_payments_attributes => [:material_id, :payment_id, :quantity])
     end
 end

@@ -1,10 +1,10 @@
-%h2 Список используемых материалов
+%h1 Listing materials
 
-%table.table.table-condensed.table-hover
+%table
   %thead
     %tr
-      %th Название материала
-      %th Цена за единицу (метр)
+      %th Material name
+      %th Material price
       %th
       %th
       %th
@@ -12,7 +12,7 @@
   %tbody
     - @materials.each do |material|
       %tr
-        %td= material.material
+        %td= material.material_name
         %td= material.material_price
         %td= link_to 'Show', material
         %td= link_to 'Edit', edit_material_path(material)
@@ -20,4 +20,4 @@
 
 %br
 
-= link_to 'Добавить материал', new_material_path
+= link_to 'New Material', new_material_path

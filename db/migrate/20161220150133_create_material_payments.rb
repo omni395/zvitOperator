@@ -1,10 +1,9 @@
 class CreateMaterialPayments < ActiveRecord::Migration[5.0]
   def change
     create_table :material_payments do |t|
-      t.references :material, foreign_key: true
+      t.string :quantity, default: 0
       t.references :payment, foreign_key: true
-      t.decimal :quantity
-      t.decimal :total_material_price
+      t.references :material, foreign_key: true
 
       t.timestamps
     end

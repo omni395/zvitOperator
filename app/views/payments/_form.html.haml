@@ -1,37 +1,87 @@
-.form.form-horizontal.form-group-sm
-  = simple_form_for(@payment, wrapper: :inline_form) do |f|
-    = f.error_notification
+.form
+  = bootstrap_form_for(@payment) do |f|
+    .form-group
+      .col-sm-4
+        = f.text_field :client_address,
+                       label: 'Адрес:',
+                       placeholder: 'Адрес (обязательно)',
+                       hide_label: true,
+                       icon: 'home'
 
-    .panel.well
-      .form-inputs
-        .panel-body
-          .row
-            .col-md-4
-              = f.input :client_address, label: 'Адрес:', placeholder: 'Адрес (обязательно)'
-            .col-md-4
-              = f.input :client_name, label: 'ФИО клиента:', placeholder: 'ФИО клиента'
-            .col-md-4
-              = f.input :client_payment, label: 'Сумма платежа:', placeholder: 'Сумма (обязательно)'
-          .row
-            .col-md-12
-              = f.input :client_description, label: 'Описание:', placeholder: 'Описание', as: :text
-      .form-inputs
-        .panel-body
+      .col-sm-4
+        = f.text_field :client_name,
+                       label: 'ФИО клиента:',
+                       placeholder: 'ФИО клиента',
+                       hide_label: true,
+                       icon: 'user'
 
-          = f.input :client_new_connection, label: 'Новое подключение?', as: :boolean, html: { id: 'client_new_connection' }
-      .form-inputs#materials
-        .panel-body
-          .row
-            .col-md-6
-              = f.association :materials, label: 'Материалы:',
-                label_method: :material,
-                value_method: :id,
-                collection: Material.all,
-                as: :hidden
-            .col-md-6
-              = f.simple_fields_for :material_payment do |mp|
-                = mp.input :quantity
-      .form-actions
-        .panel-footer
-          .btn
-            = f.button :submit, 'Подтвердить', class: 'btn btn-default btn-group-justified'
+      .col-sm-4
+        = f.text_field :client_payment,
+                       label: 'Сумма платежа:',
+                       placeholder: 'Сумма (обязательно)',
+                       hide_label: true,
+                       append: 'грн.'
+
+      .col-sm-12
+        = f.text_area :client_description,
+                      label: 'Описание:',
+                      placeholder: 'Описание',
+                      hide_label: true,
+                      icon: 'pencil'
+
+      .col-sm-4
+        = f.check_box :client_new_connection,
+                      label: 'Новое подключение?',
+                      as: :boolean,
+                      html: { id: 'client_new_connection' }
+
+        %p
+          Пока корректно не отрабатывается редактирование сохраненной записи.
+          Записи дублируются в геометрической прогрессии:(
+          Нужно сильно подумать как это побороть...
+        %p
+          %h4 Нужно внимательно вносить данные при новом подключении
+
+      #materials.col-sm-8
+        .col-sm-3
+          = f.fields_for :material_payments do |mp|
+            #material_link_1
+              = check_box_tag 'payment[material_payments_attributes][1][material_id]', 1
+              = label_tag 'payment[material_payments_attributes][1][material_id]', @materials.find(1).material_name
+            #material_1
+              = mp.number_field :quantity,
+                                hide_label: true,
+                                append: 'м.'
+
+        .col-sm-3
+          = f.fields_for :material_payments do |mp|
+            #material_link_2
+              = check_box_tag 'payment[material_payments_attributes][2][material_id]', 2
+              = label_tag 'payment[material_payments_attributes][2][material_id]', @materials.find(2).material_name
+            #material_2
+              = mp.number_field :quantity,
+                                hide_label: true,
+                                append: 'шт.'
+
+        .col-sm-3
+          = f.fields_for :material_payments do |mp|
+            #material_link_3
+              = check_box_tag 'payment[material_payments_attributes][3][material_id]', 3
+              = label_tag 'payment[material_payments_attributes][3][material_id]', @materials.find(3).material_name
+            #material_3
+              = mp.number_field :quantity,
+                                hide_label: true,
+                                append: 'шт.'
+
+        .col-sm-3
+          = f.fields_for :material_payments do |mp|
+            #material_link_4
+              = check_box_tag 'payment[material_payments_attributes][4][material_id]', 4
+              = label_tag 'payment[material_payments_attributes][4][material_id]', @materials.find(4).material_name
+            #material_4
+              = mp.number_field :quantity,
+                                hide_label: true,
+                                append: 'шт.'
+
+    .form-actions
+      = f.submit 'Подтвердить', class: 'btn btn-default btn-group-justified'

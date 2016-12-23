@@ -16,9 +16,9 @@
         .panel-collapse.collapse.in#main_user
           .panel-body
             .form-group-sm
-              .col-md-6
+              .col-sm-6
                 = f.input :user_name
-              .col-md-6
+              .col-sm-6
                 = f.input :email, required: true, autofocus: true
                 - if devise_mapping.confirmable? && resource.pending_reconfirmation?
                   %p
@@ -35,9 +35,9 @@
         .panel-collapse.collapse#change_user_password
           .panel-body
             .form-group-sm#new_user_password
-              .col-md-6
+              .col-sm-6
                 = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false
-              .col-md-6
+              .col-sm-6
                 = f.input :password_confirmation, required: false
 
         .panel-heading
@@ -51,20 +51,20 @@
         .panel-collapse.collapse#about_user
           .panel-body
             .form-group-sm
-              .col-md-4
+              .col-sm-4
                 = f.input :first_name
-              .col-md-4
+              .col-sm-4
                 = f.input :middle_name
-              .col-md-4
+              .col-sm-4
                 = f.input :last_name
 
     %p.row
-      .col-md-9
+      .col-sm-9
         .form-group-sm#current_user_password
           = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
           .form-actions#button
             = f.button :submit, "Update"
-      .col-md-3
+      .col-sm-3
         .well
           %h4 Cancel my account
           %p

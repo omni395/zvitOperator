@@ -7,8 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-['registered', 'banned', 'moderator', 'admin'].each do |role|
+['registered', 'admin'].each do |role|
   Role.find_or_create_by({name: role})
 
-
+[['Кабель', '4'], ['Муфта', '10'], ['Клипса', '10'], ['Распечатка', '5']].each do |name, price|
+  Material.find_or_create_by(material_name: name, material_price: price)
+end
 end

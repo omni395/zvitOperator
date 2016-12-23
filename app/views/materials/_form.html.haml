@@ -1,14 +1,9 @@
-.form.form-horizontal.form-group-sm
-  = simple_form_for(@material, wrapper: :horizontal_form) do |f|
-    = f.error_notification
+= simple_form_for(@material) do |f|
+  = f.error_notification
 
-    .panel.well
-      .form-inputs
-        .panel-body
-          = f.input :material, label: 'Название материала'
-          = f.input :material_price, label: 'Цена за единицу (метр)'
+  .form-inputs
+    = f.input :material_name
+    = f.input :material_price
 
-      .form-actions
-        .panel-footer
-          .btn
-            = f.button :submit, 'Добавить материал'
+  .form-actions
+    = f.button :submit

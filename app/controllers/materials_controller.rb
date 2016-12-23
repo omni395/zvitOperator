@@ -28,7 +28,7 @@ class MaterialsController < ApplicationController
 
     respond_to do |format|
       if @material.save
-        format.html { redirect_to materials_path, notice: 'Material was successfully created.' }
+        format.html { redirect_to @material, notice: 'Material was successfully created.' }
         format.json { render :show, status: :created, location: @material }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class MaterialsController < ApplicationController
   def update
     respond_to do |format|
       if @material.update(material_params)
-        format.html { redirect_to materials_path, notice: 'Material was successfully updated.' }
+        format.html { redirect_to @material, notice: 'Material was successfully updated.' }
         format.json { render :show, status: :ok, location: @material }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class MaterialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def material_params
-      params.require(:material).permit(:material, :material_price)
+      params.require(:material).permit(:material_name, :material_price)
     end
 end

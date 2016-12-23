@@ -73,6 +73,7 @@ gem 'simple_form'
 gem 'execjs'
 #gem 'node'
 gem 'country_select'
+gem 'bootstrap_form'
 
 
 #gem 'rails_admin'

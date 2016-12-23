@@ -1,10 +1,8 @@
-%p#notice= notice
-
 %p
   %b Адрес клиента:
   = @payment.client_address
 %p
-  %b ФО клиента:
+  %b ФИО клиента:
   = @payment.client_name
 %p
   %b Сумма пополнения:
@@ -12,6 +10,12 @@
 %p
   %b Описание:
   = @payment.client_description
+
+%p
+  %b Использованные материалы:
+  %br
+  - @payment.material_payments.each do |mp|
+    %p #{mp.material.material_name if mp.material != nil} - Quantity #{mp.quantity}
 
 = link_to 'Редактировать', edit_payment_path(@payment)
 \|
