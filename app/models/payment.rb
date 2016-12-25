@@ -8,20 +8,7 @@ class Payment < ApplicationRecord
   validates :client_payment, numericality: { :greater_than_or_equal_to => 0 }
 
   before_save :payment_total
-
-  # Получено за израсходованные материалы
-  def self.material_total
-    used_material = 0
-    array_used_material = MaterialPayment.where(payment_id: id)
-
-    array_used_material.each do |a|
-      used_material += a.material.material_price * a.quantity
-    end
-  end
-
-  def payment_by_dates(date)
-    
-  end
+  
 
   # Подсчет общей суммы платежа
   def payment_total
