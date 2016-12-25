@@ -16,11 +16,11 @@ ActiveRecord::Schema.define(version: 20161220150133) do
   enable_extension "plpgsql"
 
   create_table "material_payments", force: :cascade do |t|
-    t.string   "quantity",    default: "0"
+    t.decimal  "quantity"
     t.integer  "payment_id"
     t.integer  "material_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["material_id"], name: "index_material_payments_on_material_id", using: :btree
     t.index ["payment_id"], name: "index_material_payments_on_payment_id", using: :btree
   end
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20161220150133) do
   create_table "payments", force: :cascade do |t|
     t.string   "client_address"
     t.string   "client_name"
-    t.decimal  "client_payment",        default: "0.0"
+    t.decimal  "client_payment"
     t.string   "client_description"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false

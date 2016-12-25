@@ -1,0 +1,11 @@
+.nested_fields
+  .field
+    .col-sm-7
+      = f.input :material_id, as: :select,
+                collection: Material.all.map,
+                label_method: lambda {|material| "#{material.material_name} - #{material.material_price} грн. (за штуку/метр)"},
+                value_method: :id,
+                prompt: "Выбор материала"
+    .col-sm-1
+    .col-sm-4
+      = f.input :quantity

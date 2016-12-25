@@ -6,7 +6,6 @@ class PaymentsController < ApplicationController
   def index
     @payments = Payment.all
     @materials = Material.all
-
     @payment = Payment.new
     @payment.material_payments.build
   end
@@ -81,7 +80,6 @@ class PaymentsController < ApplicationController
                                       :client_payment,
                                       :client_description,
                                       :client_new_connection,
-                                      :material_ids => [],
-                                      :material_payments_attributes => [:material_id, :payment_id, :quantity])
+                                      :material_payments_attributes => [:id, :material_id, :payment_id, :quantity, :_destroy])
     end
 end

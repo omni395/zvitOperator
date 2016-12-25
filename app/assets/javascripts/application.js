@@ -15,4 +15,5 @@
 //= require twitter/bootstrap
 //= require moment
 //= require bootstrap-datetimepicker
+//= require cocoon
 //= require_tree .

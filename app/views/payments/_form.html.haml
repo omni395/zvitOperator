@@ -1,87 +1,39 @@
-.form
-  = bootstrap_form_for(@payment) do |f|
-    .form-group
-      .col-sm-4
-        = f.text_field :client_address,
-                       label: 'Адрес:',
-                       placeholder: 'Адрес (обязательно)',
-                       hide_label: true,
-                       icon: 'home'
+.form.form-horizontal.form-group-sm
+  = simple_form_for(@payment, wrapper: :inline_form) do |f|
+    = f.error_notification
 
-      .col-sm-4
-        = f.text_field :client_name,
-                       label: 'ФИО клиента:',
-                       placeholder: 'ФИО клиента',
-                       hide_label: true,
-                       icon: 'user'
-
-      .col-sm-4
-        = f.text_field :client_payment,
-                       label: 'Сумма платежа:',
-                       placeholder: 'Сумма (обязательно)',
-                       hide_label: true,
-                       append: 'грн.'
-
-      .col-sm-12
-        = f.text_area :client_description,
-                      label: 'Описание:',
-                      placeholder: 'Описание',
-                      hide_label: true,
-                      icon: 'pencil'
-
-      .col-sm-4
-        = f.check_box :client_new_connection,
-                      label: 'Новое подключение?',
-                      as: :boolean,
-                      html: { id: 'client_new_connection' }
-
-        %p
-          Пока корректно не отрабатывается редактирование сохраненной записи.
-          Записи дублируются в геометрической прогрессии:(
-          Нужно сильно подумать как это побороть...
-        %p
-          %h4 Нужно внимательно вносить данные при новом подключении
-
-      #materials.col-sm-8
-        .col-sm-3
-          = f.fields_for :material_payments do |mp|
-            #material_link_1
-              = check_box_tag 'payment[material_payments_attributes][1][material_id]', 1
-              = label_tag 'payment[material_payments_attributes][1][material_id]', @materials.find(1).material_name
-            #material_1
-              = mp.number_field :quantity,
-                                hide_label: true,
-                                append: 'м.'
-
-        .col-sm-3
-          = f.fields_for :material_payments do |mp|
-            #material_link_2
-              = check_box_tag 'payment[material_payments_attributes][2][material_id]', 2
-              = label_tag 'payment[material_payments_attributes][2][material_id]', @materials.find(2).material_name
-            #material_2
-              = mp.number_field :quantity,
-                                hide_label: true,
-                                append: 'шт.'
-
-        .col-sm-3
-          = f.fields_for :material_payments do |mp|
-            #material_link_3
-              = check_box_tag 'payment[material_payments_attributes][3][material_id]', 3
-              = label_tag 'payment[material_payments_attributes][3][material_id]', @materials.find(3).material_name
-            #material_3
-              = mp.number_field :quantity,
-                                hide_label: true,
-                                append: 'шт.'
-
-        .col-sm-3
-          = f.fields_for :material_payments do |mp|
-            #material_link_4
-              = check_box_tag 'payment[material_payments_attributes][4][material_id]', 4
-              = label_tag 'payment[material_payments_attributes][4][material_id]', @materials.find(4).material_name
-            #material_4
-              = mp.number_field :quantity,
-                                hide_label: true,
-                                append: 'шт.'
-
-    .form-actions
-      = f.submit 'Подтвердить', class: 'btn btn-default btn-group-justified'
+    .panel.well
+      .form-inputs
+        .panel-body
+          .row
+            .col-sm-4
+              = f.input :client_address, label: 'Адрес:', placeholder: 'Адрес (обязательно)'
+            .col-sm-4
+              = f.input :client_name, label: 'ФИО клиента:', placeholder: 'ФИО клиента'
+            .col-sm-4
+              = f.input :client_payment, label: 'Сумма платежа:', placeholder: 'Сумма (обязательно)'
+          .row
+            .col-sm-12
+              = f.input :client_description, label: 'Описание:', placeholder: 'Описание', as: :text
+          .col-sm-4
+            = f.input :client_new_connection, label: 'Новое подключение?', as: :boolean, html: { id: 'client_new_connection' }
+            %h3 Пока не работает удаление лишних полей.
+            %p Нужно быть повнимательнее при создании нового подклюения.
+            %p  Хотя в принципе можно потом и отредактировать :)
+          .col-sm-8
+            .form-inputs
+              #material_payments
+                .panel-body
+                  .row
+                    = f.simple_fields_for :material_payments do |mp|
+                      = render 'payments/material_payment_fields', f: mp, class: 'btn btn-default'
+                  .row
+                    .text-right
+                      .links
+                        = link_to_add_association 'Добавить материал', f, :material_payments
+                        &nbsp|&nbsp
+                        = link_to_remove_association "Удалить материал", f
+      .form-actions#submit
+        .panel-footer
+          .btn
+            = f.button :submit, 'Подтвердить', class: 'btn btn-default btn-group-justified'

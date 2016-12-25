@@ -43,7 +43,7 @@ GEM
     airbrussh (1.1.1)
       sshkit (>= 1.6.1, != 1.7.0)
     arel (7.1.4)
-    autoprefixer-rails (6.5.4)
+    autoprefixer-rails (6.6.0)
       execjs
     bcrypt (3.1.11)
     bootstrap-sass (3.3.7)
@@ -51,7 +51,6 @@ GEM
       sass (>= 3.3.4)
     bootstrap3-datetimepicker-rails (4.17.43)
       momentjs-rails (>= 2.8.1)
-    bootstrap_form (2.5.2)
     builder (3.2.2)
     byebug (9.0.6)
     cancancan (1.15.0)
@@ -70,7 +69,7 @@ GEM
     capistrano-harrow (0.5.3)
     capistrano-passenger (0.2.0)
       capistrano (~> 3.0)
-    capistrano-rails (1.2.0)
+    capistrano-rails (1.2.1)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
     capistrano-rbenv (2.1.0)
@@ -89,6 +88,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    cocoon (1.2.9)
     coderay (1.1.1)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
@@ -99,13 +99,6 @@ GEM
     coffee-script-source (1.8.0)
     commonjs (0.2.7)
     concurrent-ruby (1.0.3)
-    countries (2.0.5)
-      i18n_data (~> 0.7.0)
-      money (~> 6.7)
-      unicode_utils (~> 1.4)
-    country_select (3.0.0)
-      countries (~> 2.0)
-      sort_alphabetical (~> 1.0)
     debug_inspector (0.0.2)
     devise (4.2.0)
       bcrypt (~> 3.0)
@@ -163,7 +156,6 @@ GEM
       ruby_parser (~> 3.5)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
-    i18n_data (0.7.0)
     jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -196,9 +188,6 @@ GEM
     minitest (5.10.1)
     momentjs-rails (2.15.1)
       railties (>= 3.1)
-    money (6.7.1)
-      i18n (>= 0.6.4, <= 0.7.0)
-      sixarm_ruby_unaccent (>= 1.1.1, < 2)
     multi_json (1.12.1)
     nenv (0.3.0)
     net-scp (1.2.1)
@@ -295,10 +284,7 @@ GEM
     simple_form (3.3.1)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
-    sixarm_ruby_unaccent (1.1.1)
     slop (3.6.0)
-    sort_alphabetical (1.1.0)
-      unicode_utils (>= 1.2.2)
     spring (2.0.0)
       activesupport (>= 4.2)
     sprockets (3.7.1)
@@ -326,7 +312,6 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.4)
       execjs (>= 0.3.0, < 3)
-    unicode_utils (1.4.0)
     warden (1.2.6)
       rack (>= 1.0)
     web-console (3.4.0)
@@ -347,7 +332,6 @@ DEPENDENCIES
   autoprefixer-rails
   bootstrap-sass
   bootstrap3-datetimepicker-rails
-  bootstrap_form
   byebug
   cancancan
   capistrano
@@ -359,9 +343,9 @@ DEPENDENCIES
   capistrano-rvm
   capistrano3-puma
   capybara
+  cocoon
   coffee-rails
   coffee-script-source (= 1.8.0)
-  country_select
   devise
   execjs
   factory_girl_rails

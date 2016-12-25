@@ -72,8 +72,9 @@ gem 'haml-rails'
 gem 'simple_form'
 gem 'execjs'
 #gem 'node'
-gem 'country_select'
-gem 'bootstrap_form'
+#gem 'country_select'
+#gem 'bootstrap_form'
+gem 'cocoon'
 
 
 #gem 'rails_admin'
