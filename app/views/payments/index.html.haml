@@ -1,15 +1,15 @@
 #add_payment
-  %a.btn.btn-default.btn-sm.btn-group-justified{:href => '#'}
+  %a.btn.btn-info.btn-sm.btn-block{:href => '#'}
     Добавить платеж
 #cancel_payment
-  %a.btn.btn-default.btn-sm.btn-group-justified{:href => '#'}
+  %a.btn.btn-sm.btn-block{:href => '#'}
     Отменить редактирование
 %br
 
 #payment
   = render ('payments/form')
-
+%br
 #title_payment
-  %h2 Список платежей
+  %h4 Платежи за #{Date.today().strftime('%d.%m.%Y')}:
 #payments
   = render @payment

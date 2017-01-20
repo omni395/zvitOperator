@@ -1,7 +1,4 @@
-.row
-  .well.sidebar-nav
-    /%h3 Sidebar
-    %ul.nav.nav-list{:align => 'left'}
-      /%li.nav-header Sidebar
-      %li= link_to "Платежи", payments_path
-      %li= link_to "Материалы", materials_path
+%nav.nav.flex-sm-column
+  %a.nav-link.active{:href => payments_path} Платежи
+  %a.nav-link{:href => materials_path} Материалы
+  %a.nav-link{:href => reports_path} Отчеты

@@ -1,34 +1,25 @@
-%table.table.table-condensed.table-hover.text-center
-  %thead
+%table.table.table-condensed.table-hover
+  %thead.table-info
     %tr
+      %th.text-center Дата
       %th.text-center Адрес клиента
       %th.text-center ФИО клиента
-      %th.text-center Сумма платежа
+      %th.text-center Пополнение
+      %th.text-center Материалы
+      %th.text-center Всего
       %th
 
   %tbody
-    - @payments.each do |payment|
+    - Payment.week.each do |payment|
       %tr
+        %td.text-center= payment.created_at.strftime('%d.%m.%Y')
         %td.text-left= payment.client_address
         %td.text-left= payment.client_name
+        %td.text-center= payment.client_payment
+        %td.text-center= payment.used_material
         %td.text-center= payment.payment_total
-
         %td
-          %a{:href => '#', class: 'show_payment_details_for_new_connection',
-                      'data-toggle' => 'tooltip',
-                      title: 'Показать/Скрыть'}
-            %i{class: 'glyphicon glyphicon-sort'}
-          &nbsp
-          = link_to edit_payment_path(payment),
-                      'data-toggle' => 'tooltip',
-                       title: 'Редактировать' do
-            %i{class: 'glyphicon glyphicon-pencil'}
-          &nbsp
-          = link_to payment, :method => :delete,
-                             :data => { :confirm => 'Точно?.. Уверен?..' },
-                             'data-toggle' => 'tooltip',
-                             title: 'Удалить' do
-            %i{class: 'glyphicon glyphicon-remove'}
-      %tr{class: 'detail_fields', id: "payment_details_for_new_connection_#{payment.id}"}
-        %td{colspan: '6'}
-          = render partial: 'payments/show_details_for_new_connection', locals: {payment: payment}
+          = link_to 'Показать', payment
+          = link_to 'Редактировать', edit_payment_path(payment)
+          = link_to 'Удалить', payment, :method => :delete,
+                             :data => { :confirm => 'Точно?.. Уверен?..' }

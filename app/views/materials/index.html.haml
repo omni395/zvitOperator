@@ -1,23 +1,15 @@
-%h1 Listing materials
-
-%table
-  %thead
-    %tr
-      %th Material name
-      %th Material price
-      %th
-      %th
-      %th
-
-  %tbody
-    - @materials.each do |material|
-      %tr
-        %td= material.material_name
-        %td= material.material_price
-        %td= link_to 'Show', material
-        %td= link_to 'Edit', edit_material_path(material)
-        %td= link_to 'Destroy', material, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+#add_material
+  %a.btn.btn-info.btn-sm.btn-block{:href => '#'}
+    Добавить материалы
+#cancel_material
+  %a.btn.btn-sm.btn-block{:href => '#'}
+    Свернуть форму
 %br
 
-= link_to 'New Material', new_material_path
+#material
+  = render ('materials/form')
+%br
+#title_material
+  %h4 Список материалов:
+#materials
+  = render @material

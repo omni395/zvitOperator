@@ -1,0 +1,16 @@
+%table.table.table-condensed.table-hover
+  %thead.table-info
+    %tr
+      %th.text-center Название материала
+      %th.text-center Стоимость материала
+      %th
+
+  %tbody
+    - @materials.each do |material|
+      %tr
+        %td.text-center= material.material_name
+        %td.text-center= material.material_price
+        %td.text-center
+          = link_to 'Показать', material, class: 'show_material'
+          = link_to 'Редактировать', edit_material_path(material)
+          = link_to 'Удалить', material, :method => :delete, :data => { :confirm => 'Точно?.. Уверен?..' }

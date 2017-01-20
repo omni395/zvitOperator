@@ -15,7 +15,7 @@
   %b Использованные материалы:
   %br
   - @payment.material_payments.each do |mp|
-    %p #{mp.material.material_name if mp.material != nil} - Quantity #{mp.quantity if mp.quantity != nil}
+    %p #{mp.material.material_name if mp.material != nil} #{mp.quantity if mp.quantity != nil}
 
 = link_to 'Редактировать', edit_payment_path(@payment)
 \|

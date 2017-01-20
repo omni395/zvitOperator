@@ -28,3 +28,11 @@
  * 
  
  ****
+ 
+              = render 'payments/material_payment_fields', f: mp, class: 'btn btn-default'
+            .text-right
+              = link_to_add_association 'Добавить материал', f, :material_payments, class: 'btn btn-sm btn-info'
+              &nbsp
+              = link_to_remove_association "Удалить материал", f, class: 'btn btn-sm btn-info'
+
+              

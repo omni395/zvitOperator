@@ -1,12 +1,12 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+
 jQuery ->
   $ ->
     # Инициализация всплывающих подсказок
-    $('[data-toggle="tooltip"]').tooltip()
+    #$('[data-toggle="tooltip"]').tooltip()
 
-    #
     # Форма добавления нового платежа
     #
     # Изначаньно форма и кнопка отмены скрыты
@@ -47,8 +47,32 @@ jQuery ->
       parent = $(this).parents('tr')
       $(parent.next('tr')).slideToggle()
 
+
     #
-    # Сумма использованых материалов
+    # Выбор даты отчета
     #
-    quantity = $('spanmaterials_quantity').nextAll()
-    console.log(quantity.length)
+    $('#datetimepicker1').datetimepicker
+      locale:           'en'
+      format:           'YYYY-MM-DD'
+      showTodayButton:  true
+      defaultDate:      new Date()
+      maxDate:          new Date()
+
+    $('#datetimepicker2').datetimepicker
+      locale:           'en'
+      format:           'YYYY-MM-DD'
+      showTodayButton:  true
+      defaultDate:      new Date()
+      maxDate:          new Date()
+      useCurrent:       false
+
+    $('#datetimepicker1').on 'dp.change', (e) ->
+      $('#datetimepicker2').data('DateTimePicker').minDate(e.date)
+      start_date = $('#selected_date').val()
+
+    $('#datetimepicker2').on 'dp.change', (e) ->
+      $('#datetimepicker1').data('DateTimePicker').maxDate(e.date)
+      end_date = $('#selected_date').val()
+
+    $('#update_menu').on 'click', ->
+      $('selected_date').text(selected_date)

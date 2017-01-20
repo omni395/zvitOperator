@@ -1,11 +1,14 @@
 class PaymentsController < ApplicationController
   before_action :set_payment, only: [:show, :edit, :update, :destroy]
 
+  def report
+    #@reports = Payment.find_by(params[:updated_at])
+  end
+
   # GET /payments
   # GET /payments.json
   def index
     @payments = Payment.all
-    @materials = Material.all
     @payment = Payment.new
     @payment.material_payments.build
   end
@@ -31,7 +34,7 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(payment_params)
     respond_to do |format|
       if @payment.save
-        format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
+        format.html { redirect_to payments_path, notice: 'Payment was successfully created.' }
         format.json { render :show, status: :created, location: @payment }
       else
         format.html { render :new }

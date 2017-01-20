@@ -1,39 +1,30 @@
-.form.form-horizontal.form-group-sm
+.form-group
   = simple_form_for(@payment, wrapper: :inline_form) do |f|
     = f.error_notification
+    .form-control
+      .row
+        .col-4
+          = f.input :client_address, label: 'Адрес:', placeholder: 'Адрес (обязательно)'
+        .col-4
+          = f.input :client_name, label: 'ФИО клиента:', placeholder: 'ФИО клиента'
+        .col-4
+          = f.input :client_payment, label: 'Сумма платежа:', placeholder: 'Сумма (обязательно)'
+      .row
+        .col-12
+          = f.input :client_description, label: 'Описание:', placeholder: 'Описание', as: :text
 
-    .panel.well
-      .form-inputs
-        .panel-body
-          .row
-            .col-sm-4
-              = f.input :client_address, label: 'Адрес:', placeholder: 'Адрес (обязательно)'
-            .col-sm-4
-              = f.input :client_name, label: 'ФИО клиента:', placeholder: 'ФИО клиента'
-            .col-sm-4
-              = f.input :client_payment, label: 'Сумма платежа:', placeholder: 'Сумма (обязательно)'
-          .row
-            .col-sm-12
-              = f.input :client_description, label: 'Описание:', placeholder: 'Описание', as: :text
-          .col-sm-4
-            = f.input :client_new_connection, label: 'Новое подключение?', as: :boolean, html: { id: 'client_new_connection' }
-            %h3 Пока не работает удаление лишних полей.
-            %p Нужно быть повнимательнее при создании нового подклюения.
-            %p  Хотя в принципе можно потом и отредактировать :)
-          .col-sm-8
-            .form-inputs
-              #material_payments
-                .panel-body
-                  .row
-                    = f.simple_fields_for :material_payments do |mp|
-                      = render 'payments/material_payment_fields', f: mp, class: 'btn btn-default'
-                  .row
-                    .text-right
-                      .links
-                        = link_to_add_association 'Добавить материал', f, :material_payments
-                        &nbsp|&nbsp
-                        = link_to_remove_association "Удалить материал", f
-      .form-actions#submit
-        .panel-footer
-          .btn
-            = f.button :submit, 'Подтвердить', class: 'btn btn-default btn-group-justified'
+    .form-control
+      .row
+        .col-4
+          = f.input :client_new_connection, label: 'Новое подключение?', as: :boolean, html: { id: 'client_new_connection' }
+        .col-8
+          #material_payments
+            - Material.all.each do |i|
+              .form-check
+                %label.form-check-label
+                  %input{:type => "checkbox", :name => "payment[material_payments_attributes][#{i.id}][material_id]", :id => "pyment_material_payments_attributes_#{i.id}_material_id", :value => "#{i.id}"}
+                    = i.material_name
+                  %input{:type => "number", :name => "payment[material_payments_attributes][#{i.id}][quantity]", :id => "pyment_material_payments_attributes_#{i.id}_quantity"}
+
+    .form-control
+      = f.button :submit, 'Подтвердить', class: "btn btn-info"

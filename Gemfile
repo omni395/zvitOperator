@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.3.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails' # , '4.2.6'
@@ -63,10 +63,9 @@ end
 
 gem 'devise'
 gem 'cancancan'
-gem "twitter-bootstrap-rails"
-gem 'momentjs-rails'
-gem 'bootstrap3-datetimepicker-rails'
-gem 'bootstrap-sass'
+gem "bootstrap", '~> 4.0.0.alpha6'
+#gem 'momentjs-rails'
+#gem 'bootstrap3-datetimepicker-rails'
 gem 'autoprefixer-rails'
 gem 'haml-rails'
 gem 'simple_form'
@@ -74,7 +73,8 @@ gem 'execjs'
 #gem 'node'
 #gem 'country_select'
 #gem 'bootstrap_form'
-gem 'cocoon'
+#gem 'cocoon'
+gem 'will_paginate-bootstrap'
 
 
 #gem 'rails_admin'

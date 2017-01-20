@@ -5,6 +5,7 @@ class MaterialsController < ApplicationController
   # GET /materials.json
   def index
     @materials = Material.all
+    @material = Material.new
   end
 
   # GET /materials/1

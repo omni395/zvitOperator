@@ -20,11 +20,16 @@
 
 
   %body
+    // Верхняя навигация
     = render ('layouts/top_navigator')
-    .container
-      .col-sm-3{:align => 'center'}
+    %br
+    .row.container
+      .col-sm-3
+        // Боковая навигация
         = render ('layouts/side_nav')
       .col-sm-9
-        = bootstrap_flash
+        - flash.each do |name, msg|
+          = content_tag(:div, msg, class: "alert alert-info")
         = yield
-    //= render ('layouts/footer')
+    .row
+      //= render ('layouts/footer')

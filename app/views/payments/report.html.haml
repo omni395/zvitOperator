@@ -1,0 +1,8 @@
+= week_report
+
+#report_form
+  .form-group
+    = form_tag('/reports', method: 'get') do
+      = date_field :q, :max => Date.today, :value => Date.today
+      = date_field :q, :max => Date.today, :value => Date.today
+      

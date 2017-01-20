@@ -1,9 +1,11 @@
-= simple_form_for(@material) do |f|
-  = f.error_notification
-
-  .form-inputs
-    = f.input :material_name
-    = f.input :material_price
-
-  .form-actions
-    = f.button :submit
+.form-group
+  = simple_form_for(@material, wrapper: :inline_form) do |f|
+    = f.error_notification
+    .row
+      .col-6
+        = f.input :material_name,label: 'Название материала:', placeholder: 'Название материала'
+      .col-6
+        = f.input :material_price, label: 'Стоимость материала:', placeholder: 'Стоимость материала'
+    .row
+      .col-12
+        = f.button :submit, 'Подтвердить', class: 'btn-info'
