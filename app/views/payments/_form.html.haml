@@ -21,10 +21,13 @@
           #material_payments
             - Material.all.each do |i|
               .form-check
-                %label.form-check-label
-                  %input{:type => "checkbox", :name => "payment[material_payments_attributes][#{i.id}][material_id]", :id => "pyment_material_payments_attributes_#{i.id}_material_id", :value => "#{i.id}"}
-                    = i.material_name
-                  %input{:type => "number", :name => "payment[material_payments_attributes][#{i.id}][quantity]", :id => "pyment_material_payments_attributes_#{i.id}_quantity"}
+                .row
+                  .col-5
+                    %label.form-check-label
+                      %input{:type => "checkbox", :name => "payment[material_payments_attributes][#{i.id}][material_id]", :id => "pyment_material_payments_attributes_#{i.id}_material_id", :value => "#{i.id}"}
+                        = i.material_name
+                  .col-7
+                    %input{:type => "number", :name => "payment[material_payments_attributes][#{i.id}][quantity]", :id => "pyment_material_payments_attributes_#{i.id}_quantity"}
 
     .form-control
       = f.button :submit, 'Подтвердить', class: "btn btn-info"

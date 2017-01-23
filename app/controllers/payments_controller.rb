@@ -2,7 +2,9 @@ class PaymentsController < ApplicationController
   before_action :set_payment, only: [:show, :edit, :update, :destroy]
 
   def report
-    #@reports = Payment.find_by(params[:updated_at])
+    @report_today = Payment.report_today
+    @report_week = Payment.report_week
+    @report_month = Payment.report_month
   end
 
   # GET /payments

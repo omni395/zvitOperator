@@ -1,4 +1,4 @@
-%table.table.table-condensed.table-hover
+%table.table.table-sm.table-hover
   %thead.table-info
     %tr
       %th.text-center Название материала
@@ -11,6 +11,10 @@
         %td.text-center= material.material_name
         %td.text-center= material.material_price
         %td.text-center
-          = link_to 'Показать', material, class: 'show_material'
-          = link_to 'Редактировать', edit_material_path(material)
-          = link_to 'Удалить', material, :method => :delete, :data => { :confirm => 'Точно?.. Уверен?..' }
+          = link_to material, class: 'show_material' do
+            %span.fa.fa-info{"aria-hidden" => "true"} &nbsp
+          = link_to edit_material_path(material) do
+            %span.fa.fa-edit{"aria-hidden" => "true"} &nbsp
+          = link_to material, :method => :delete,
+                              :data => { :confirm => 'Точно?.. Уверен?..' } do
+            %span.fa.fa-close{"aria-hidden" => "true"}

@@ -1,4 +1,4 @@
-%table.table.table-condensed.table-hover
+%table.table.table-sm.table-hover
   %thead.table-info
     %tr
       %th.text-center Дата
@@ -10,7 +10,7 @@
       %th
 
   %tbody
-    - Payment.week.each do |payment|
+    - Payment.report_today.each do |payment|
       %tr
         %td.text-center= payment.created_at.strftime('%d.%m.%Y')
         %td.text-left= payment.client_address
@@ -19,7 +19,36 @@
         %td.text-center= payment.used_material
         %td.text-center= payment.payment_total
         %td
-          = link_to 'Показать', payment
-          = link_to 'Редактировать', edit_payment_path(payment)
-          = link_to 'Удалить', payment, :method => :delete,
-                             :data => { :confirm => 'Точно?.. Уверен?..' }
+          = link_to payment do
+            %span.fa.fa-info{"aria-hidden" => "true"} &nbsp
+          = link_to edit_payment_path(payment) do
+            %span.fa.fa-edit{"aria-hidden" => "true"} &nbsp
+          = link_to payment, :method => :delete,
+                             :data => { :confirm => 'Точно?.. Уверен?..' } do
+            %span.fa.fa-close{"aria-hidden" => "true"}
+
+.row
+  .col-4
+    .card
+      .card-header
+        .text-center
+          Всего клиентов:
+      .card-block
+        .text-center
+          = Payment.report_today.total_and_percent_report(Payment.report_today)[2]
+  .col-4
+    .card
+      .card-header
+        .text-center
+          Выручка за день:
+      .card-block
+        .text-center
+          = Payment.report_today.total_and_percent_report(Payment.report_today)[0]
+  .col-4
+    .card
+      .card-header
+        .text-center
+          Заработано (%):
+      .card-block
+        .text-center
+          = Payment.report_today.total_and_percent_report(Payment.report_today)[1]

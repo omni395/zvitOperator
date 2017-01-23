@@ -1,8 +1,92 @@
-= week_report
-
-#report_form
-  .form-group
-    = form_tag('/reports', method: 'get') do
-      = date_field :q, :max => Date.today, :value => Date.today
-      = date_field :q, :max => Date.today, :value => Date.today
-      
+.card
+  .card-header
+    .text-center
+      Отчет за #{(Date.today).strftime('%d.%m.%Y')}
+  .card-block
+    .row
+      .col-4
+        .card
+          .card-header
+            .text-center
+              Всего клиентов:
+          .card-block
+            .text-center
+              = @report_today.total_and_percent_report(@report_today)[2]
+      .col-4
+        .card
+          .card-header
+            .text-center
+              Выручка за день:
+          .card-block
+            .text-center
+              = @report_today.total_and_percent_report(@report_today)[0]
+      .col-4
+        .card
+          .card-header
+            .text-center
+              Заработано (%):
+          .card-block
+            .text-center
+              = @report_today.total_and_percent_report(@report_today)[1]
+%br
+.card
+  .card-header
+    .text-center
+      Отчет за текущую отчетную неделю
+  .card-block
+    .row
+      .col-4
+        .card
+          .card-header
+            .text-center
+              Всего клиентов:
+          .card-block
+            .text-center
+              = @report_week.total_and_percent_report(@report_week)[2]
+      .col-4
+        .card
+          .card-header
+            .text-center
+              Выручка за неделю:
+          .card-block
+            .text-center
+              = @report_week.total_and_percent_report(@report_week)[0]
+      .col-4
+        .card
+          .card-header
+            .text-center
+              Заработано (%):
+          .card-block
+            .text-center
+              = @report_week.total_and_percent_report(@report_week)[1]
+%br
+.card
+  .card-header
+    .text-center
+      Отчет за текущий месяц (с 1-го числа)
+  .card-block
+    .row
+      .col-4
+        .card
+          .card-header
+            .text-center
+              Всего клиентов:
+          .card-block
+            .text-center
+              = @report_month.total_and_percent_report(@report_month)[2]
+      .col-4
+        .card
+          .card-header
+            .text-center
+              Выручка за месяц:
+          .card-block
+            .text-center
+              = @report_month.total_and_percent_report(@report_month)[0]
+      .col-4
+        .card
+          .card-header
+            .text-center
+              Заработано (%):
+          .card-block
+            .text-center
+              = @report_month.total_and_percent_report(@report_month)[1]

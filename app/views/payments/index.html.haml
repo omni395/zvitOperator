@@ -10,6 +10,6 @@
   = render ('payments/form')
 %br
 #title_payment
-  %h4 Платежи за #{Date.today().strftime('%d.%m.%Y')}:
+  %h4 Платежи за #{(Date.today).strftime('%d.%m.%Y')}:
 #payments
   = render @payment
