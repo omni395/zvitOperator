@@ -46,7 +46,7 @@ class Payment < ApplicationRecord
   def self.report_month
     year = Date.today.year
     month = Date.today.month
-    where('updated_at >= ? AND updated_at <= ?', Date.new(year, month, 1), Date.today.to_date)
+    where('updated_at >= ? AND updated_at <= ?', Date.new(year, month, 1), Date.today.to_date + 1.day)
   end
 
   def self.report_by_date(start_date, end_date)
