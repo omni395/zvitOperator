@@ -5,6 +5,12 @@ class PaymentsController < ApplicationController
     @report_today = Payment.report_today
     @report_week = Payment.report_week
     @report_month = Payment.report_month
+    respond_to do |format|
+      format.html
+      format.pdf do
+
+      end
+    end
   end
 
   # GET /payments

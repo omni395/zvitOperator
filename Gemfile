@@ -62,17 +62,15 @@ end
 gem 'devise'
 gem 'cancancan'
 gem "bootstrap", '~> 4.0.0.alpha6'
-#gem 'momentjs-rails'
-#gem 'bootstrap3-datetimepicker-rails'
 gem 'autoprefixer-rails'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'execjs'
-#gem 'node'
-#gem 'country_select'
-#gem 'bootstrap_form'
-#gem 'cocoon'
 gem 'will_paginate-bootstrap'
+
+# convert to pdf
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 
 #gem 'rails_admin'

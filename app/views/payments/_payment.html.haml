@@ -30,7 +30,7 @@
 .row
   .col-4
     .card
-      .card-header
+      .card-header.card-info
         .text-center
           Всего клиентов:
       .card-block
@@ -38,7 +38,7 @@
           = Payment.report_today.total_and_percent_report(Payment.report_today)[2]
   .col-4
     .card
-      .card-header
+      .card-header.card-info
         .text-center
           Выручка за день:
       .card-block
@@ -46,7 +46,7 @@
           = Payment.report_today.total_and_percent_report(Payment.report_today)[0]
   .col-4
     .card
-      .card-header
+      .card-header.card-info
         .text-center
           Заработано (%):
       .card-block

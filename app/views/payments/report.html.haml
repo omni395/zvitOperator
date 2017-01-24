@@ -1,12 +1,12 @@
-.card
-  .card-header
+.table
+  .table-header.table-info
     .text-center
       Отчет за #{(Date.today).strftime('%d.%m.%Y')}
   .card-block
     .row
       .col-4
         .card
-          .card-header
+          .card-header.card-info
             .text-center
               Всего клиентов:
           .card-block
@@ -14,7 +14,7 @@
               = @report_today.total_and_percent_report(@report_today)[2]
       .col-4
         .card
-          .card-header
+          .card-header.card-info
             .text-center
               Выручка за день:
           .card-block
@@ -22,22 +22,22 @@
               = @report_today.total_and_percent_report(@report_today)[0]
       .col-4
         .card
-          .card-header
+          .card-header.card-info
             .text-center
               Заработано (%):
           .card-block
             .text-center
               = @report_today.total_and_percent_report(@report_today)[1]
-%br
-.card
-  .card-header
+
+.table
+  .table-header.table-info
     .text-center
       Отчет за текущую отчетную неделю
   .card-block
     .row
       .col-4
         .card
-          .card-header
+          .card-header.card-info
             .text-center
               Всего клиентов:
           .card-block
@@ -45,7 +45,7 @@
               = @report_week.total_and_percent_report(@report_week)[2]
       .col-4
         .card
-          .card-header
+          .card-header.card-info
             .text-center
               Выручка за неделю:
           .card-block
@@ -53,22 +53,22 @@
               = @report_week.total_and_percent_report(@report_week)[0]
       .col-4
         .card
-          .card-header
+          .card-header.card-info
             .text-center
               Заработано (%):
           .card-block
             .text-center
               = @report_week.total_and_percent_report(@report_week)[1]
-%br
-.card
-  .card-header
+
+.table
+  .table-header.table-info
     .text-center
       Отчет за текущий месяц (с 1-го числа)
   .card-block
     .row
       .col-4
         .card
-          .card-header
+          .card-header.card-info
             .text-center
               Всего клиентов:
           .card-block
@@ -76,7 +76,7 @@
               = @report_month.total_and_percent_report(@report_month)[2]
       .col-4
         .card
-          .card-header
+          .card-header.card-info
             .text-center
               Выручка за месяц:
           .card-block
@@ -84,7 +84,7 @@
               = @report_month.total_and_percent_report(@report_month)[0]
       .col-4
         .card
-          .card-header
+          .card-header.card-info
             .text-center
               Заработано (%):
           .card-block

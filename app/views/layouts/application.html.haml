@@ -4,7 +4,7 @@
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    %title= content_for?(:title) ? yield(:title) : "Помошник оператора"
+    %title= content_for?(:title) ? yield(:title) : "WildPark оператор"
     = csrf_meta_tags
     = stylesheet_link_tag "application", :media => "all"
     = favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144'
@@ -23,14 +23,16 @@
 
   %body
     // Верхняя навигация
-    = render ('layouts/top_navigator')
+    = render ('layouts/top_nav')
     %br
-    .row.container-fluid
-      .col-3
-        // Боковая навигация
-        = render ('layouts/side_nav')
-      .col-9
-        = render ('layouts/messages')
-        = yield
+    .row
+      .col-sm-3
+        .container
+          // Боковая навигация
+          = render ('layouts/side_nav')
+      .col-sm-9
+        .container
+          = render ('layouts/messages')
+          = yield
     //.row.container-fluid
     //  = render ('layouts/footer')
