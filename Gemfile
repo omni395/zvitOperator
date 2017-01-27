@@ -63,6 +63,7 @@ end
 gem 'devise'
 gem 'cancancan'
 gem "bootstrap", '~> 4.0.0.alpha6'
+gem 'tether-rails'
 gem 'autoprefixer-rails'
 gem 'haml-rails'
 gem 'simple_form'
