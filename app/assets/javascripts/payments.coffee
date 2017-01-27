@@ -31,6 +31,6 @@ jQuery ->
       #если форма валидна, то
       if formValid
         #сркыть модальное окно
-        $('#modalMaterial').modal 'hide'
+        $('#modalPaymentMaterial').modal 'hide'
       return
     return
