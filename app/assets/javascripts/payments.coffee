@@ -4,43 +4,33 @@
 
 jQuery ->
   $ ->
-    #
-    # Форма добавления нового платежа
-    #
-    # Изначаньно форма и кнопка отмены скрыты
-    $('#payment, #cancel_payment').hide()
-    # Показывает форму добавления платежа и кнопку отмены. Кнопка добавленияя платежа скрывется
-    $('#add_payment').on 'click', ->
-      $('div #payment').slideDown()
-      $('#cancel_payment').slideDown()
-      $('#add_payment').slideUp()
-    # Скрывает форму добавления платежа и кнопку отмены. Кнопка добавления платежа отображается
-    $('#cancel_payment').on 'click', ->
-      $('div #payment').slideUp()
-      $('#cancel_payment').slideUp()
-      $('#add_payment').slideDown()
-
-
-    #
-    # Показывает дополнительные поля формы для добавления использованных материалов, если создается новое подключение
-    #
-    # Изначально форма для добавления материалов скрыта
-    $('#material_payments').hide()
-    # Показать форму для добавления материала если чекбокс отмечен и спрятать если нет
-    $('#payment_client_new_connection').on 'change', ->
-      if $(this).is(':checked')
-        $('#material_payments').slideDown()
-      else
-        $('#material_payments').slideUp()
-
-
-    #
-    # Показать детализацию платежа для нового подключения
-    #
-    # Изначально детализация платежа скрыта
-    $('.detail_fields').hide()
-    $('.hide_payment_details_for_new_connection').hide()
-    # Паказывает детали платежа при нажатии на ссылку
-    $('.show_payment_details_for_new_connection').on 'click', ->
-      parent = $(this).parents('tr')
-      $(parent.next('tr')).slideToggle()
+    #при нажатии на кнопку с id="submit"
+    $('#submit').on 'click', ->
+      #переменная formValid
+      formValid = true
+      #перебрать все элементы управления input
+      $('input').each ->
+        #найти предков, которые имеют класс .form-group, для установления success/error
+        formGroup = $(this).parents('.form-group')
+        #найти fa, который предназначен для показа иконки успеха или ошибки
+        fa = formGroup.find('.form-control')
+        #для валидации данных используем HTML5 функцию checkValidity
+        if @checkValidity()
+          #добавить к formGroup класс .has-success, удалить has-error
+          formGroup.addClass('has-success').removeClass 'has-danger'
+          #добавить к fa класс fa-ok, удалить fa-remove
+          fa.addClass('form-control-success').removeClass 'form-control-danger'
+        else
+          #добавить к formGroup класс .has-error, удалить .has-success
+          formGroup.addClass('has-danger').removeClass 'has-success'
+          #добавить к fa класс fa-remove, удалить fa-ok
+          fa.addClass('form-control-danger').removeClass 'form-control-success'
+          #отметить форму как невалидную
+          formValid = false
+        return
+      #если форма валидна, то
+      if formValid
+        #сркыть модальное окно
+        $('#modalMaterial').modal 'hide'
+      return
+    return

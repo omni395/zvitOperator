@@ -1,0 +1,34 @@
+= simple_form_for(@payment, wrapper: :inline_form) do |f|
+  = f.error_notification
+  .form-inline
+    #modalPaymentMaterial.modal.fade{:role => "dialog", :tabindex => "-1"}
+      .modal-dialog
+        .modal-content
+          .modal-header.table-info
+            %h4.modal-title Платеж:
+            %button.close{"data-dismiss" => "modal", :type => "button"}
+              .fa.fa-close
+          .modal-body.container-fluid
+            .row
+              .col
+                .form-group
+                  .form-check
+                    %table.table.table-sm
+                      - Material.all.each do |i|
+                        %tr
+                          %td
+                            %label.form-check-label.justify-self-left
+                            %input{:type => "checkbox",
+                                   :name => "payment[material_payments_attributes][#{i.id}][material_id]",
+                                   :id => "payment_material_payments_attributes_#{i.id}_material_id",
+                                   :value => "#{i.id}"}
+                              = i.material_name
+                          %td
+                            %input{:type => "number",
+                                  :name => "payment[material_payments_attributes][#{i.id}][quantity]",
+                                  :id => "payment_material_payments_attributes_#{i.id}_quantity"}
+
+
+          .modal-footer
+            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Отмена
+            = f.button :submit, 'Подтвердить', class: "btn btn-info"

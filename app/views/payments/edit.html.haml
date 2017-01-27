@@ -1,7 +1,11 @@
 %h2 Редактировать платеж
 
+.container
+  %button.btn.btn-sm.btn-info{"data-target" => "#modalPayment", "data-toggle" => "modal", :type => "button"}
+    Редактировать платеж
+
 = render 'form'
 
-= link_to 'Детали платежа', @payment
+= link_to 'Показать платеж', @payment
 \|
 = link_to 'Назад', payments_path

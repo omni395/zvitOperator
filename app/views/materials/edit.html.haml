@@ -1,7 +1,11 @@
-%h1 Editing material
+%h1 Редактировать материал
+
+.container
+  %button.btn.btn-sm.btn-info{"data-target" => "#modalMaterial", "data-toggle" => "modal", :type => "button"}
+    Редактировать материал
 
 = render 'form'
 
-= link_to 'Show', @material
+= link_to 'Показать материал', @material
 \|
-= link_to 'Back', materials_path
+= link_to 'Назад', materials_path

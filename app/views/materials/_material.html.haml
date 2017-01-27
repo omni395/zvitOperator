@@ -13,8 +13,6 @@
         %td.text-center
           = link_to material, class: 'show_material' do
             %span.fa.fa-info{"aria-hidden" => "true"} &nbsp
-          = link_to edit_material_path(material) do
-            %span.fa.fa-edit{"aria-hidden" => "true"} &nbsp
           = link_to material, :method => :delete,
                               :data => { :confirm => 'Точно?.. Уверен?..' } do
             %span.fa.fa-close{"aria-hidden" => "true"}

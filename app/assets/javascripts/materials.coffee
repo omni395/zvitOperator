@@ -4,18 +4,33 @@
 
 jQuery ->
   $ ->
-    #
-    # Форма добавления нового материала
-    #
-    # Изначаньно форма и кнопка отмены скрыты
-    $('#material, #cancel_material').hide()
-    # Показывает форму добавления материала и кнопку отмены. Кнопка добавленияя материала скрывется
-    $('#add_material').on 'click', ->
-      $('div #material').slideDown()
-      $('#cancel_material').slideDown()
-      $('#add_material').slideUp()
-    # Скрывает форму добавления материала и кнопку отмены. Кнопка добавления материала отображается
-    $('#cancel_material').on 'click', ->
-      $('div #material').slideUp()
-      $('#cancel_material').slideUp()
-      $('#add_material').slideDown()
+    #при нажатии на кнопку с id="submit"
+    $('#submit').on 'click', ->
+      #переменная formValid
+      formValid = true
+      #перебрать все элементы управления input
+      $('input').each ->
+        #найти предков, которые имеют класс .form-group, для установления success/error
+        formGroup = $(this).parents('.form-group')
+        #найти fa, который предназначен для показа иконки успеха или ошибки
+        fa = formGroup.find('.form-control')
+        #для валидации данных используем HTML5 функцию checkValidity
+        if @checkValidity()
+          #добавить к formGroup класс .has-success, удалить has-error
+          formGroup.addClass('has-success').removeClass 'has-danger'
+          #добавить к fa класс fa-ok, удалить fa-remove
+          fa.addClass('form-control-success').removeClass 'form-control-danger'
+        else
+          #добавить к formGroup класс .has-error, удалить .has-success
+          formGroup.addClass('has-danger').removeClass 'has-success'
+          #добавить к fa класс fa-remove, удалить fa-ok
+          fa.addClass('form-control-danger').removeClass 'form-control-success'
+          #отметить форму как невалидную
+          formValid = false
+        return
+      #если форма валидна, то
+      if formValid
+        #сркыть модальное окно
+        $('#modalMaterial').modal 'hide'
+      return
+    return

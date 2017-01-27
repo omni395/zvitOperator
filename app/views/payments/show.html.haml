@@ -1,22 +1,43 @@
-%p
-  %b Адрес клиента:
-  = @payment.client_address
-%p
-  %b ФИО клиента:
-  = @payment.client_name
-%p
-  %b Сумма пополнения:
-  = @payment.client_payment
-%p
-  %b Описание:
-  = @payment.client_description
+= render 'payments/form'
+= render 'payments/add_material_form'
 
-%p
-  %b Использованные материалы:
-  %br
-  - @payment.material_payments.each do |mp|
-    %p #{mp.material.material_name if mp.material != nil} #{mp.quantity if mp.quantity != nil}
+.col-6
+  .card
+    .card-header.card-info
+      %b Платеж:
+    .card-block
+      %p
+        %b Адрес клиента:
+        %b= @payment.client_address
 
-= link_to 'Редактировать', edit_payment_path(@payment)
-\|
-= link_to 'Назад', payments_path
+      %p
+        %b ФИО клиента:
+        %b= @payment.client_name
+
+      %p
+        %b Сумма пополнения:
+        %b= @payment.client_payment
+
+      - if @payment.client_description?
+        %p
+          %b Описание:
+          %b= @payment.client_description
+
+      - if @payment.client_new_connection?
+        %p
+          %span.fa.fa-check
+          &nbspЭто новое подключение.
+          %button.btn.btn-link.btn-info{"data-target" => "#modalPaymentMaterial", "data-toggle" => "modal", :type => "button"}
+            Добавить/изменить материалы
+        %p
+          %br
+          - @payment.material_payments.each do |mp|
+            - if mp.material != nil && mp.quantity != nil
+              %p
+              %span #{mp.material.material_name} - #{mp.quantity} (шт./м.),
+              %span на сумму #{mp.material.material_price * mp.quantity}
+    .card-footer
+      .container
+        %button.btn.btn-link.btn-info{"data-target" => "#modalPayment", "data-toggle" => "modal", :type => "button"}
+          Редактировать
+        = link_to 'К списку', payments_path

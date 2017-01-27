@@ -1,10 +1,6 @@
-#add_material
-  %a.btn.btn-info.btn-sm.btn-block{:href => '#'}
-    Добавить материалы
-#cancel_material
-  %a.btn.btn-sm.btn-outline-info.btn-block{:href => '#'}
-    Свернуть форму
-%br
+.container
+  %button.btn.btn-sm.btn-info{"data-target" => "#modalMaterial", "data-toggle" => "modal", :type => "button"}
+    Новый материал
 
 #material
   = render ('materials/form')

@@ -32,7 +32,11 @@
 .table
   .table-header.table-info
     .text-center
-      Отчет за текущую отчетную неделю
+      Отчет за текущую отчетную неделю&nbsp
+      - if Date.today
+        = link_to :action => "report", :format => :pdf do
+          Сохранить отчет&nbsp
+          %span.fa.fa-file-pdf-o{"aria-hidden" => "true"}
   .card-block
     .row
       .col-4

@@ -4,6 +4,7 @@
       %th.text-center Дата
       %th.text-center Адрес клиента
       %th.text-center ФИО клиента
+      %th.text-center Новый?
       %th.text-center Пополнение
       %th.text-center Материалы
       %th.text-center Всего
@@ -15,14 +16,15 @@
         %td.text-center= payment.created_at.strftime('%d.%m.%Y')
         %td.text-left= payment.client_address
         %td.text-left= payment.client_name
+        %td.text-center
+          - if payment.client_new_connection?
+            %span.fa.fa-check
         %td.text-center= payment.client_payment
         %td.text-center= payment.used_material
         %td.text-center= payment.payment_total
         %td
           = link_to payment do
             %span.fa.fa-info{"aria-hidden" => "true"} &nbsp
-          = link_to edit_payment_path(payment) do
-            %span.fa.fa-edit{"aria-hidden" => "true"} &nbsp
           = link_to payment, :method => :delete,
                              :data => { :confirm => 'Точно?.. Уверен?..' } do
             %span.fa.fa-close{"aria-hidden" => "true"}
