@@ -49,6 +49,7 @@ end
 group :production do
   gem "rails_12factor"
   gem 'therubyracer'
+  gem 'puma'
 end
 
 group :test, :development do
