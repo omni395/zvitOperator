@@ -6,6 +6,7 @@ jQuery ->
   $ ->
     $('p#test').addClass('text-hide')
     #при нажатии на кнопку с id="submit"
+    console.log('test')
     $('#submit').on 'click', ->
       #переменная formValid
       formValid = true
