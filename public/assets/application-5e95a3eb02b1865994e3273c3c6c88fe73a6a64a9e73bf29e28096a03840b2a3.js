@@ -19275,6 +19275,7 @@ var Popover = function ($) {
 (function() {
   jQuery(function() {
     return $(function() {
+      $('p#test').addClass('text-hide');
       $('#submit').on('click', function() {
         var formValid;
         formValid = true;
@@ -19319,7 +19320,7 @@ var Popover = function ($) {
           }
         });
         if (formValid) {
-          $('#modalMaterial').modal('hide');
+          $('#modalPaymentMaterial').modal('hide');
         }
       });
     });
