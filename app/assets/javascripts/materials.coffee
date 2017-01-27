@@ -4,7 +4,7 @@
 
 jQuery ->
   $ ->
-    $('p#test').addClass('text-hide')
+    $('#test').addClass('text-hide')
     #при нажатии на кнопку с id="submit"
     console.log('test')
     $('#submit').on 'click', ->
