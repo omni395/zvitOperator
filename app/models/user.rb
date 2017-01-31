@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :payments
   belongs_to :role # принадлежит ролям
 
   # Устанавливаем роль при создании пользователя

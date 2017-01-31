@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170131071811) do
+ActiveRecord::Schema.define(version: 20170131095951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 20170131071811) do
     t.datetime "updated_at",                            null: false
     t.boolean  "client_new_connection"
     t.decimal  "payment_total",         default: "0.0"
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_payments_on_user_id", using: :btree
   end
 
   create_table "roles", force: :cascade do |t|
@@ -88,5 +90,6 @@ ActiveRecord::Schema.define(version: 20170131071811) do
 
   add_foreign_key "material_payments", "materials"
   add_foreign_key "material_payments", "payments"
+  add_foreign_key "payments", "users"
   add_foreign_key "users", "roles"
 end

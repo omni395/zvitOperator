@@ -69,6 +69,7 @@ gem 'autoprefixer-rails'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'execjs'
+gem 'paperclip'
 #gem 'will_paginate-bootstrap'
 
 # convert to pdf

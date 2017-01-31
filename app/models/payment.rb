@@ -2,6 +2,8 @@ class Payment < ApplicationRecord
   has_many :material_payments, dependent: :destroy
   has_many :materials, through: :material_payments
 
+  belong_to :user
+
   accepts_nested_attributes_for :material_payments, allow_destroy: true
 
   validates :client_address, :client_payment, presence: true
