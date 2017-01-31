@@ -1,5 +1,5 @@
 %h3
-  Edit #{resource_name.to_s.humanize}
+  Редактировать #{resource_name.to_s.humanize}
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
   = f.error_notification
   .form-inputs
@@ -12,7 +12,7 @@
               "data-parent" => "#accordion",
               "aria-expanded" => "true",
               "aria-controls" => "main_user"}
-              Username and Email
+              Имя пользователя и email
         .panel-collapse.collapse.in#main_user
           .panel-body
             .form-group-sm
@@ -31,12 +31,12 @@
               "data-parent" => "#accordion",
               "aria-expanded" => "false",
               "aria-controls" => "change_user_password"}
-              Change Password
+              Изменить пароль
         .panel-collapse.collapse#change_user_password
           .panel-body
             .form-group-sm#new_user_password
               .col-sm-6
-                = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false
+                = f.input :password, autocomplete: "off", hint: "Оставьте пустым, если не хотите менять пароль", required: false
               .col-sm-6
                 = f.input :password_confirmation, required: false
 
@@ -47,7 +47,7 @@
               "data-parent" => "#accordion",
               "aria-expanded" => "false",
               "aria-controls" => "about_user"}
-              User's full name
+              Ф.И.О.
         .panel-collapse.collapse#about_user
           .panel-body
             .form-group-sm
@@ -61,12 +61,12 @@
     %p.row
       .col-sm-9
         .form-group-sm#current_user_password
-          = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
+          = f.input :current_password, hint: "необходимо ввести текущий пароль для подтверждения", required: true
           .form-actions#button
-            = f.button :submit, "Update"
+            = f.button :submit, "Обновить"
       .col-sm-3
         .well
-          %h4 Cancel my account
+          %h4 Удалить аккаунт
           %p
-            Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-= link_to "Back", :back
+            Что-то не так? #{link_to "Удалить аккаунт", registration_path(resource_name), data: { confirm: "Уверен?" }, method: :delete}
+= link_to "Назад", :back

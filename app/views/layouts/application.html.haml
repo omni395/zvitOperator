@@ -39,4 +39,8 @@
       //.row.container-fluid
       //  = render ('layouts/footer')
     - else
+      .container
+        .row.justify-content-center
+          .col-6
+            = render ('layouts/messages')
       = yield

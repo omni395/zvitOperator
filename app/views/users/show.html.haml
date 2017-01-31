@@ -1,12 +1,10 @@
 .row
-  .col-sm-6
-    .avatar.panel.panel-success
-  .col-sm-6
+  .col
     .well#user
       %table.table
         %tr
           %th
-            User name:
+            Имя пользователя:
           %td
             = @user.user_name
         %tr
@@ -16,15 +14,15 @@
             = @user.email
         %tr
           %th
-            User role:
+            Пивилегии пользователя:
           %td
             = @user.role.name
         %tr
           %th
-            User full name:
+            Ф.И.О.:
           %td
             = user_full_name
         %tr
           %th
           %td{:align => 'right'}
-            = link_to "Edit this block", edit_user_registration_path
+            = link_to "Редактировать данные пользователя", edit_user_registration_path
