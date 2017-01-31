@@ -22,6 +22,11 @@ class User < ApplicationRecord
   before_save :middle_name.downcase
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+# Проверка роли пользователя
+def is_role?(role)
+  self.role == Role.find_by_name(role)
+end
+  
   private
     def set_role
       if User.first == nil

@@ -26,15 +26,17 @@
   %body
     // Верхняя навигация
     = render ('layouts/top_nav')
-    %br
-    .row
-      .col-sm-3
-        .container
-          // Боковая навигация
-          = render ('layouts/side_nav')
-      .col-sm-9
-        .container
-          = render ('layouts/messages')
-          = yield
-    //.row.container-fluid
-    //  = render ('layouts/footer')
+    - if user_signed_in?
+      .row
+        .col-sm-3
+          .container
+            // Боковая навигация
+            = render ('layouts/side_nav')
+        .col-sm-9
+          .container-fluid
+            = render ('layouts/messages')
+            = yield
+      //.row.container-fluid
+      //  = render ('layouts/footer')
+    - else
+      = yield

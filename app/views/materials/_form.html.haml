@@ -4,7 +4,7 @@
     #modalMaterial.modal.fade{:role => "dialog", :tabindex => "-1"}
       .modal-dialog.modal-sm
         .modal-content
-          .modal-header.table-info
+          .modal-header
             %h4.modal-title Материал:
             %button.close{"data-dismiss" => "modal", :type => "button"}
               .fa.fa-close
@@ -30,5 +30,5 @@
           .modal-footer
             %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Отмена
             = f.button :submit, 'Подтвердить',
-                       class: 'btn-info',
+                       class: 'btn',
                        id: 'submit'

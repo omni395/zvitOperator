@@ -1,29 +1,29 @@
-%nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
+%nav.navbar.navbar-toggleable-sm.navbar-light.bg-faded
   %button.navbar-toggler.navbar-toggler-right{"aria-controls" => "navbarToggler",
-                                              "aria-expanded" => "false",
-                                              "aria-label" => "Toggle navigation",
-                                              "data-target" => "#navbarToggler",
-                                              "data-toggle" => "collapse",
-                                              :type => "button"}
+                                                "aria-expanded" => "false",
+                                                "aria-label" => "Toggle navigation",
+                                                "data-target" => "#navbarToggler",
+                                                "data-toggle" => "collapse",
+                                                :type => "button"}
     %span.navbar-toggler-icon
   %a.navbar-brand{:href => "/"}
     WildPark
     %sub
       оператор
   #navbarToggler.collapse.navbar-collapse
-    %ul.nav.navbar-nav.pull-sm-right.mr-auto.mt-2.mt-md-0
+    %ul.nav.navbar-nav.mr-auto
+    %ul.nav.navbar-nav.pull-sm-right.mt-2.mt-md-0
       - if user_signed_in?
         %li.nav-item
-          %a.nav-link{:href => user_path(current_user)}
-            = current_user.email
-            %span.sr-only (current)
+          .nav-link
+            = link_to current_user.email, user_path(current_user), class: 'btn btn-sm'
         %li.nav-item
-          %a.nav-link{:href => destroy_user_session_path}
-            Выйти
+          .nav-link
+            = link_to 'Выход', destroy_user_session_path, :method => 'delete', class: 'btn btn-sm'
       - else
         %li.nav-item
-          %a.nav-link{:href => new_user_session_path}
-            Вход
+          .nav-link
+            = link_to 'Вход', new_user_session_path, class: 'btn btn-sm'
         %li.nav-item
-          %a.nav-link{:href => new_user_registration_path}
-            Регистрация
+          .nav-link
+            = link_to 'Регистрация', new_user_registration_path, class: 'btn btn-sm'

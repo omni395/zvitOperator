@@ -69,18 +69,18 @@ gem 'autoprefixer-rails'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'execjs'
-gem 'will_paginate-bootstrap'
+#gem 'will_paginate-bootstrap'
 
 # convert to pdf
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
 
-#gem 'rails_admin'
+gem 'rails_admin'
 #gem 'bootstrap-wysihtml5-rails'
 #gem 'dragonfly'
-#gem 'ckeditor'
-# gem 'russian'
+gem 'ckeditor'
+gem 'russian'
 # gem 'pacecar'
 
 group :development do

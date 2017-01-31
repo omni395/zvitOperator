@@ -1,7 +1,18 @@
 %ul.nav.nav-pills.flex-sm-column
-  %li.nav-item
-    %a.nav-link{:href => payments_path} Платежи
-  %li.nav-item
-    %a.nav-link{:href => materials_path} Материалы
-  %li.nav-item
-    %a.nav-link{:href => reports_path} Отчеты
+  - if user_signed_in?
+    %li.nav-item
+      .nav-link
+        = link_to 'Главная', root_path, class: 'btn'
+    - if can? :manage, :rails_admin
+      %li.nav-item
+        .nav-link
+          = link_to 'Админочка', rails_admin_path, class: 'btn'
+    %li.nav-item
+      .nav-link
+        = link_to 'Платежи', payments_path, class: 'btn'
+    %li.nav-item
+      .nav-link
+        = link_to 'Материалы', materials_path, class: 'btn'
+    %li.nav-item
+      .nav-link
+        = link_to 'Отчеты', reports_path, class: 'btn'

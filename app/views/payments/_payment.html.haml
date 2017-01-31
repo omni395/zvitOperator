@@ -1,5 +1,5 @@
 %table.table.table-sm.table-hover
-  %thead.table-info
+  %thead
     %tr
       %th.text-center Дата
       %th.text-center Адрес клиента
@@ -32,7 +32,7 @@
 .row
   .col-4
     .card
-      .card-header.card-info
+      .card-header
         .text-center
           Всего клиентов:
       .card-block
@@ -40,7 +40,7 @@
           = Payment.report_today.total_and_percent_report(Payment.report_today)[2]
   .col-4
     .card
-      .card-header.card-info
+      .card-header
         .text-center
           Выручка за день:
       .card-block
@@ -48,7 +48,7 @@
           = Payment.report_today.total_and_percent_report(Payment.report_today)[0]
   .col-4
     .card
-      .card-header.card-info
+      .card-header
         .text-center
           Заработано (%):
       .card-block

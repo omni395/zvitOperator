@@ -3,7 +3,7 @@
 
 .col-6
   .card
-    .card-header.card-info
+    .card-header
       %b Платеж:
     .card-block
       %p
@@ -27,7 +27,7 @@
         %p
           %span.fa.fa-check
           &nbspЭто новое подключение.
-          %button.btn.btn-link.btn-info{"data-target" => "#modalPaymentMaterial", "data-toggle" => "modal", :type => "button"}
+          %button.btn.btn-link{"data-target" => "#modalPaymentMaterial", "data-toggle" => "modal", :type => "button"}
             Добавить/изменить материалы
         %p
           %br
@@ -38,6 +38,6 @@
               %span на сумму #{mp.material.material_price * mp.quantity}
     .card-footer
       .container
-        %button.btn.btn-link.btn-info{"data-target" => "#modalPayment", "data-toggle" => "modal", :type => "button"}
+        %button.btn.btn-link{"data-target" => "#modalPayment", "data-toggle" => "modal", :type => "button"}
           Редактировать
         = link_to 'К списку', payments_path

@@ -2,7 +2,7 @@
 
 .col-sm-6
   .card
-    .card-header.card-info
+    .card-header
       %b Материал:
     .card-block
       %b #{@material.material_name}
@@ -11,6 +11,6 @@
       грн.
     .card-footer
       .container
-        %button.btn.btn-link.btn-info{"data-target" => "#modalMaterial", "data-toggle" => "modal", :type => "button"}
+        %button.btn.btn-link{"data-target" => "#modalMaterial", "data-toggle" => "modal", :type => "button"}
           Редактировать
         = link_to 'К списку', materials_path

@@ -28,3 +28,21 @@
  * 
  
  ****
+
+
+      - if user_signed_in?
+        %li.nav-item.dropdown
+          %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => user_path(current_user)}
+            = current_user.email
+          .dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
+            - if can? :manage, Rails_admin
+              .dropdown-item
+                = link_to 'Админка', rails_admin_path, class: 'btn'
+            .dropdown-divider
+            .dropdown-item
+              = link_to 'Выход', destroy_user_session_path, :method => 'delete', class: 'btn'
+      - else
+        .dropdown-item
+          = link_to 'Вход', new_user_session_path
+        .dropdown-item
+          = link_to 'Регистрация', new_user_registration_path
