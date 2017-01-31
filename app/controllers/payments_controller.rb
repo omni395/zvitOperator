@@ -42,7 +42,7 @@ class PaymentsController < ApplicationController
   # POST /payments
   # POST /payments.json
   def create
-    @payment = Payment.new(payment_params)
+    @payment = current_user.payments.new(payment_params)
     respond_to do |format|
       if @payment.save
         format.html {
