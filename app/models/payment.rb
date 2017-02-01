@@ -39,10 +39,14 @@ class Payment < ApplicationRecord
 
   def self.report_week
     now = Date.today.to_date
-    until now.wednesday?
-      now -= 1.day
-    end
-    where('updated_at >= ? AND updated_at <= ?', now, Date.today.to_date + 1.day)
+    if now.wednesday?
+      now -= 6.day
+      where('updated_at >= ? AND updated_at <= ?', now, Date.today.to_date + 1.day)
+    else
+      until now.wednesday?
+        now -= 1.day
+      end
+      where('updated_at >= ? AND updated_at <= ?', now, Date.today.to_date + 1.day)
   end
 
   def self.report_month

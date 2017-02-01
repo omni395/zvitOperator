@@ -1,3 +1,21 @@
+.container
+  .card
+    %table.table.table-sm
+      %thead
+        %tr
+          %th.text-center Всего клиентов
+          %th.text-center Выручка
+          %th.text-center Заработано (%)
+      %tbody
+        %tr
+          %td.text-center
+            = Payment.report_today.total_and_percent_report(Payment.report_today)[2]
+          %td.text-center
+            = Payment.report_today.total_and_percent_report(Payment.report_today)[0]
+          %td.text-center
+            = Payment.report_today.total_and_percent_report(Payment.report_today)[1]
+
+%br
 %table.table.table-sm.table-hover
   %thead
     %tr
@@ -28,29 +46,3 @@
           = link_to payment, :method => :delete,
                              :data => { :confirm => 'Точно?.. Уверен?..' } do
             %span.fa.fa-close{"aria-hidden" => "true"}
-
-.row
-  .col-4
-    .card
-      .card-header
-        .text-center
-          Всего клиентов:
-      .card-block
-        .text-center
-          = Payment.report_today.total_and_percent_report(Payment.report_today)[2]
-  .col-4
-    .card
-      .card-header
-        .text-center
-          Выручка за день:
-      .card-block
-        .text-center
-          = Payment.report_today.total_and_percent_report(Payment.report_today)[0]
-  .col-4
-    .card
-      .card-header
-        .text-center
-          Заработано (%):
-      .card-block
-        .text-center
-          = Payment.report_today.total_and_percent_report(Payment.report_today)[1]

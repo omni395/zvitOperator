@@ -1,6 +1,17 @@
 .btn, .a
   cursor: pointer
 
+// Поведение навигационных кнопок
+.active_navigation_button
+  +shadow(5px 5px 5px rgba(193, 209, 216, 0.5))
+  +transform(scale(1.03,1.03), ease-out, 200ms)
+.nav-item
+  &:hover
+    +shadow(5px 5px 5px rgba(193, 209, 216, 0.5))
+    +transform(scale(1.03,1.03), ease-out, 200ms)
+
+
+
 // Цвет ошибки в сгенерируемом flash messsage
 .help-block
   color: red
@@ -11,7 +22,7 @@
 .card
   +shadow(5px 5px 5px rgba(193, 209, 216, 0.5))
   +border-radius(10px)
-  +transform(scale(1.0,1.0), ease-out, 550ms)
+  +transform(scale(0.9, 0.9), ease-out, 550ms)
   &:hover
     +shadow(10px 10px 10px rgba(193, 209, 216, 0.5))
-    +transform(scale(1.05,1.05), ease-out, 550ms)
+    +transform(scale(1.0, 0.9), ease-out, 550ms)
