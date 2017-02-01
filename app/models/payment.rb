@@ -47,6 +47,7 @@ class Payment < ApplicationRecord
         now -= 1.day
       end
       where('updated_at >= ? AND updated_at <= ?', now, Date.today.to_date + 1.day)
+    end
   end
 
   def self.report_month
