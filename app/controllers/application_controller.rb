@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_filter :set_i18n_locale_from_params # Локализация rails_admin
+  before_action :set_i18n_locale_from_params # Локализация rails_admin
 
   protected
     # Локализация rails_admin

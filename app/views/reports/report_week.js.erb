@@ -1,0 +1,2 @@
+$('.reports').empty();
+$('.reports').html("<%= escape_javascript (render :partial => 'reports/report_week').html_safe %>");

@@ -14,6 +14,11 @@
     %ul.nav.navbar-nav.mr-auto
     %ul.nav.navbar-nav.pull-sm-right.mt-2.mt-md-0
       - if user_signed_in?
+        - if can? :manage, :rails_admin
+          %li.nav-item
+            .nav-link
+              = link_to rails_admin_path, class: 'btn btn-sm', data: {toggle: 'tooltip', placement: 'left'}, title: 'Перейти в админку' do
+                %span.fa.fa-gear
         %li.nav-item
           .nav-link
             = link_to current_user.email, user_path(current_user), class: 'btn btn-sm'

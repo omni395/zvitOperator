@@ -26,9 +26,10 @@
   %body
     // Верхняя навигация
     = render ('layouts/top_nav')
+    %br
     - if user_signed_in?
       .row
-        .col-sm-3
+        .col-sm-3.togglier
           .container
             // Боковая навигация
             = render ('layouts/side_nav')

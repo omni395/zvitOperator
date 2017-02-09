@@ -1,0 +1,13 @@
+= provide(:title, 'Расходы')
+
+.container
+  %button.btn.btn-sm{"data-target" => "#modalExpence", "data-toggle" => "modal", :type => "button"}
+    Новый расход
+
+#expence
+  = render ('expences/form')
+%br
+#title_expence
+  %h4 Список расходов за #{(Date.today).strftime('%d.%m.%Y')}:
+#expences
+  = render @expence

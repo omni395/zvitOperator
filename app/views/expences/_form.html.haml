@@ -1,0 +1,46 @@
+= simple_form_for(@expence, wrapper: :inline_form) do |f|
+  = f.error_notification
+  .form-inline
+    #modalExpence.modal.fade{:role => "dialog", :tabindex => "-1"}
+      .modal-dialog.modal-sm
+        .modal-content
+          .modal-header
+            %h4.modal-title Расход:
+            %button.close{"data-dismiss" => "modal", :type => "button"}
+              .fa.fa-close
+          .modal-body.container-fluid
+            .row
+              .col
+                .form-group
+                  %label
+                    Расход:
+                  .input-group
+                    = f.input :expence,
+                              label: 'Расход:',
+                              placeholder: 'Расход',
+                              autofocus: true
+            .row
+              .col
+                .form-group
+                  %label
+                    Сумма расхода:
+                  .input-group
+                    = f.input :expence_value,
+                              label: 'Сумма расхода:',
+                              placeholder: 'Сумма расхода',
+                              autofocus: true
+            .row
+              .col
+                .form-group
+                  %label
+                    Описание расхода:
+                  .input-group
+                    = f.input :expence_description,
+                              label: 'Описание расхода:',
+                              placeholder: 'Описание расхода',
+                              as: :text
+          .modal-footer
+            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Отмена
+            = f.button :submit, 'Подтвердить',
+                       class: 'btn',
+                       id: 'submit'

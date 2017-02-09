@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :payments
+  has_many :expences
+  has_many :articles
   belongs_to :role # принадлежит ролям
 
   # Устанавливаем роль при создании пользователя

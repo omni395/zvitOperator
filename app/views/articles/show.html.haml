@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @article.title
+%p
+  %b Article:
+  = @article.article.html_safe
+%p
+  %b User:
+  = @article.user.email
+
+= link_to 'Редактировать статью', edit_article_path(@article)
+\|
+= link_to 'Назад', articles_path

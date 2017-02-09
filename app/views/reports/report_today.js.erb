@@ -1,0 +1,2 @@
+$('.reports').empty();
+$('.reports').replaceWith("<%= escape_javascript (render :partial => 'reports/report_today').html_safe %>");

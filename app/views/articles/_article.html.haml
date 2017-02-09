@@ -1,0 +1,24 @@
+%table.table.table-sm.table-hover
+  %thead
+    %tr
+      %th.text-center Заголовок
+      %th.text-center Описание статьи
+      %th.text-center Автор
+      %th
+
+  %tbody
+    - @articles.each do |article|
+      %tr
+        %td
+          = article.title
+        %td
+          = article.article_description
+        %td.text-center
+          = article.user.email
+        %td.text-center
+          = link_to article do
+            %span.fa.fa-info{"aria-hidden" => "true", 'data-toggle' => 'tooltip', placement: 'left', title: 'Детальная инфомация'} &nbsp
+          = link_to edit_article_path(article) do
+            %span.fa.fa-edit{"aria-hidden" => "true", 'data-toggle' => 'tooltip', placement: 'left', title: 'Редактировать'} &nbsp
+          = link_to article, :method => :delete, :data => { :confirm => 'Are you sure?' } do
+            %span.fa.fa-close{"aria-hidden" => "true", 'data-toggle' => 'tooltip', placement: 'left', title: 'Удалить'}

@@ -1,0 +1,10 @@
+= provide(:title, 'Статьи')
+
+.container
+  = link_to 'Добавить статью', new_article_path, class: 'btn btn-sm'
+
+%br
+#title_article
+  %h4 Список статей:
+#articles
+  = render @articles

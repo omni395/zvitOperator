@@ -1,0 +1,18 @@
+= simple_form_for(@article, wrapper: :inline_form) do |f|
+  = f.error_notification
+  .container-fluid
+    .row
+      .col
+        .form-group
+          %label
+            Заголовок
+          = f.input :title, label: 'Заголовок'
+    .row
+      .col
+        .form-group
+          %label
+            Текст статьи
+          = f.input :article, :input_html => { :class => "wysi" }, label: 'Текст статьи'
+
+  .form-actions
+    = f.button :submit

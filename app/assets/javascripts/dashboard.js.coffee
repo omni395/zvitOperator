@@ -4,14 +4,12 @@
 
 jQuery ->
   $ ->
+    # Активируем всплывающие подсказки
+    $('[data-toggle="tooltip"]').tooltip()
+    
     # Сделать активной ссылку в боковом меню
     title = $('title').text().split(' ', 1).toString()
-    $('#side_navigation').children('li').firstChild('a').each ->
-      menu_elem = $(this).text().toString()
-      console.log(typeOf: title)
-      console.log(typeOf: menu_elem)
-      console.log(menu_elem == title)
-      #if title == menu_elem
-      #  $(this).addClass('active_navigation_button')
-
-      #return
+    $('#side_navigation').children('li').each ->
+      if $(this).text().indexOf(title) == 2
+        $(this).addClass('active_navigation_button')
+      return

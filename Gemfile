@@ -69,7 +69,6 @@ gem 'autoprefixer-rails'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'execjs'
-gem 'paperclip'
 #gem 'will_paginate-bootstrap'
 
 # convert to pdf
@@ -78,11 +77,9 @@ gem 'wkhtmltopdf-binary'
 
 
 gem 'rails_admin'
-#gem 'bootstrap-wysihtml5-rails'
-#gem 'dragonfly'
-gem 'ckeditor'
+gem 'wysiwyg-rails'
+gem 'paperclip'
 gem 'russian'
-# gem 'pacecar'
 
 group :development do
   gem 'listen'

@@ -40,4 +40,19 @@ RailsAdmin.config do |config|
     history_index
     history_show
   end
+
+  config.model Article do
+    edit do
+      field :title do
+        label do
+          'Заголовок'
+        end
+      end
+      field :article, :froala do
+        label do
+          'Текст статьи'
+        end
+      end
+    end
+  end
 end

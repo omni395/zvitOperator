@@ -1,0 +1,23 @@
+%table.table.table-sm.table-hover
+  %thead
+    %tr
+      %th.text-center Расход
+      %th.text-center Сумма
+      %th.text-center Описание 
+      %th
+
+  %tbody
+    - @expences.report_today.each do |expence|
+      %tr
+        %td.text-center
+          = expence.expence
+        %td.text-center
+          = expence.expence_value
+        %td
+          = expence.expence_description
+        %td.text-center
+          = link_to expence, class: 'show_material' do
+            %span.fa.fa-info{"aria-hidden" => "true", 'data-toggle' => 'tooltip', placement: 'left', title: 'Детальная инфомация'} &nbsp
+          = link_to expence, :method => :delete,
+                              :data => { :confirm => 'Точно?.. Уверен?..' } do
+            %span.fa.fa-close{"aria-hidden" => "true", 'data-toggle' => 'tooltip', placement: 'left', title: 'Удалить'}

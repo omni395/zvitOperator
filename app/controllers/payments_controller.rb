@@ -1,21 +1,6 @@
 class PaymentsController < ApplicationController
   before_action :set_payment, only: [:show, :edit, :update, :destroy]
 
-  def report
-    @report_today = Payment.report_today
-    @report_week = Payment.report_week
-    @report_month = Payment.report_month
-    respond_to do |format|
-      format.html
-      format.pdf do
-        render :pdf => "Report_from_#{(Date.today - 6.day).strftime('%d.%m.%Y')}_to_#{(Date.today).strftime('%d.%m.%Y')}",
-               template: 'payments/pdf_report.html.haml',
-               page_size: "A4",
-               disposition: 'attachment'
-      end
-    end
-  end
-
   # GET /payments
   # GET /payments.json
   def index

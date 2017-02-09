@@ -12,7 +12,7 @@
         %td.text-center= material.material_price
         %td.text-center
           = link_to material, class: 'show_material' do
-            %span.fa.fa-info{"aria-hidden" => "true"} &nbsp
+            %span.fa.fa-info{"aria-hidden" => "true", 'data-toggle' => 'tooltip', placement: 'left', title: 'Детальная инфомация'} &nbsp
           = link_to material, :method => :delete,
                               :data => { :confirm => 'Точно?.. Уверен?..' } do
-            %span.fa.fa-close{"aria-hidden" => "true"}
+            %span.fa.fa-close{"aria-hidden" => "true", 'data-toggle' => 'tooltip', placement: 'left', title: 'Удалить'}

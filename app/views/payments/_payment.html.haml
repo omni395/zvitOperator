@@ -29,7 +29,7 @@
       %th
 
   %tbody
-    - Payment.report_today.each do |payment|
+    - @payments.report_today.each do |payment|
       %tr
         %td.text-center= payment.created_at.strftime('%d.%m.%Y')
         %td.text-left= payment.client_address
@@ -42,7 +42,7 @@
         %td.text-center= payment.payment_total
         %td
           = link_to payment do
-            %span.fa.fa-info{"aria-hidden" => "true"} &nbsp
+            %span.fa.fa-info{'aria-hidden' => 'true', 'data-toggle' => 'tooltip', placement: 'left', title: 'Детальная инфомация'} &nbsp
           = link_to payment, :method => :delete,
                              :data => { :confirm => 'Точно?.. Уверен?..' } do
-            %span.fa.fa-close{"aria-hidden" => "true"}
+            %span.fa.fa-close{'aria-hidden' => 'true', 'data-toggle' => 'tooltip', placement: 'left', title: 'Удалить'}

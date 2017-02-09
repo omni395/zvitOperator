@@ -1,3 +1,7 @@
+*
+  //padding: 5px
+  //margin:  5px
+
 .btn, .a
   cursor: pointer
 
@@ -5,13 +9,15 @@
 .active_navigation_button
   +shadow(5px 5px 5px rgba(193, 209, 216, 0.5))
   +transform(scale(1.03,1.03), ease-out, 200ms)
+
 .nav-item
+  max-height: 40px
+  max-width:  160px
+  border: 3px, solid, black
   &:hover
     +shadow(5px 5px 5px rgba(193, 209, 216, 0.5))
     +transform(scale(1.03,1.03), ease-out, 200ms)
-
-
-
+    
 // Цвет ошибки в сгенерируемом flash messsage
 .help-block
   color: red

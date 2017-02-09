@@ -1,18 +1,36 @@
-%ul.nav.nav-pills.flex-sm-column#side_navigation
+%ul.nav.flex-sm-column#side_navigation
   - if user_signed_in?
     %li.nav-item
       .nav-link
-        = link_to 'Главная', root_path, class: 'btn'
-    - if can? :manage, :rails_admin
-      %li.nav-item
-        .nav-link
-          = link_to 'Админочка', rails_admin_path, class: 'btn'
+        = link_to payments_path, class: 'btn btn-sm' do
+          %span.fa.fa-money
+          &nbsp
+          +
+          &nbsp
+          Платежи
     %li.nav-item
       .nav-link
-        = link_to 'Платежи', payments_path, class: 'btn'
+        = link_to expences_path, class: 'btn btn-sm' do
+          %span.fa.fa-money
+          &nbsp
+          &#8211
+          &nbsp
+          Расходы
     %li.nav-item
       .nav-link
-        = link_to 'Материалы', materials_path, class: 'btn'
+        = link_to materials_path, class: 'btn btn-sm' do
+          %span.fa.fa-cogs
+          &nbsp
+          Материалы
     %li.nav-item
       .nav-link
-        = link_to 'Отчеты', reports_path, class: 'btn'
+        = link_to reports_path, class: 'btn btn-sm' do
+          %span.fa.fa-calendar
+          &nbsp
+          Отчеты
+    %li.nav-item
+      .nav-link
+        =link_to articles_path, class: 'btn btn-sm' do
+          %span.fa.fa-newspaper-o
+          &nbsp
+          Статьи
