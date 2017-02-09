@@ -1,4 +1,4 @@
-module Report
+module Reportable
   extend ActiveSupport::Concern
 
   module ClassMethods
@@ -30,18 +30,6 @@ module Report
 
     def report_by_date(start_date, end_date)
       where('updated_at >= ? AND updated_at <= ?', start_date, end_date)
-    end
-
-    #
-    # Подсчет общей суммы расходов то датам
-    #
-    def total_and_percent_report(period)
-      total_report_today,  percent_report_today = 0, 0
-      period.each do |report|
-        total_report_today += report.payment_total
-      end
-      percent_report_today = total_report_today * 0.05
-      return total_report_today,  percent_report_today, period.length
     end
   end
 end

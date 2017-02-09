@@ -3,8 +3,3 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
   $ ->
-    # Активиуем wysihtml5
-    $('.wysi').froalaEditor({
-      language: 'ru',
-      imageUploadURL: '/images'
-      })

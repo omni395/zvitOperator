@@ -1,25 +1,6 @@
-.container
-  .card
-    %table.table.table-sm
-      %thead
-        %tr
-          %th.text-center Всего клиентов
-          %th.text-center Выручка
-          %th.text-center Заработано (%)
-      %tbody
-        %tr
-          %td.text-center
-            = Payment.report_today.total_and_percent_report(Payment.report_today)[2]
-          %td.text-center
-            = Payment.report_today.total_and_percent_report(Payment.report_today)[0]
-          %td.text-center
-            = Payment.report_today.total_and_percent_report(Payment.report_today)[1]
-
-%br
 %table.table.table-sm.table-hover
   %thead
     %tr
-      %th.text-center Дата
       %th.text-center Адрес клиента
       %th.text-center ФИО клиента
       %th.text-center Новый?
@@ -31,7 +12,6 @@
   %tbody
     - @payments.report_today.each do |payment|
       %tr
-        %td.text-center= payment.created_at.strftime('%d.%m.%Y')
         %td.text-left= payment.client_address
         %td.text-left= payment.client_name
         %td.text-center

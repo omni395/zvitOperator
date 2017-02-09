@@ -1,31 +1,29 @@
 = provide(:title, 'Отчеты')
 
+%br
+%h4 Отчеты
 
-%ul.nav.nav-pils
+/ Вкладки
+%ul.nav.nav-tabs{:role => "tablist"}
   %li.nav-item
-    .nav-link
-      = link_to "Отчет за #{Date.today.strftime('%d.%m.%Y')}",
-                report_today_path,
-                class: 'btn btn-sm',
-                remote: true
+    %a.nav-link.active{"data-toggle" => "tab", :href => "#report_today", :role => "tab"} #{Date.today.strftime('%d.%m.%Y')}
   %li.nav-item
-    .nav-link
-      = link_to "Отчет за неделю",
-                report_week_path,
-                class: 'btn btn-sm',
-                remote: true
+    %a.nav-link{"data-toggle" => "tab", :href => "#report_week", :role => "tab"} за неделю
   %li.nav-item
-    .nav-link
-      = link_to "Отчет за месяц",
-                report_month_path,
-                class: 'btn btn-sm',
-                remote: true
-  %li.nav-item
-    .nav-link
-      = link_to "Отчет по датам",
-                report_by_date_path,
-                class: 'btn btn-sm disabled',
-                remote: true
-
-.report
-  /= render('reports/report_today')
+    %a.nav-link{"data-toggle" => "tab", :href => "#report_month", :role => "tab"} за месяц
+  %li.nav-item.disable
+    %a.nav-link{"data-toggle" => "tab", :href => "#report_by_date", :role => "tab"} по датам
+/ Содержание вкладок
+.tab-content
+  #report_today.tab-pane.active{:role => "tabpanel"}
+    %br
+    = render partial: ('reports/report'), locals: {payments: @payments_today, expences: @expences_today}
+  #report_week.tab-pane{:role => "tabpanel"}
+    %br
+    = render partial: ('reports/report'), locals: {payments: @payments_week, expences: @expences_week}
+  #report_month.tab-pane{:role => "tabpanel"}
+    %br
+    = render partial: ('reports/report'), locals: {payments: @payments_month, expences: @expences_month}
+  #report_by_date.tab-pane{:role => "tabpanel"}
+    %br
+    = render partial: ('reports/report'), locals: {payments: @payments_by_date, expences: @expences_by_date}

@@ -77,7 +77,7 @@ gem 'wkhtmltopdf-binary'
 
 
 gem 'rails_admin'
-gem 'wysiwyg-rails'
+gem 'ckeditor'
 gem 'paperclip'
 gem 'russian'
 

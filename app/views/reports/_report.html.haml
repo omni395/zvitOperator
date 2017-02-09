@@ -1,0 +1,89 @@
+%blockquote.blockquote
+  .text-justify
+    %span{style: "padding: 0px 10px;"} &nbsp
+    Сумма в кассе (за вычетом процента оператора и дополнительных расходов) - 
+    %strong
+      #{payments.total_and_percent_report(payments)[1] - payments.total_and_percent_report(payments)[2] - expences.total_expence_report(expences)}
+    грн.
+    %footer.blockquote-footer.blockquote-reverse
+      Клиентов за период -
+      %strong
+        #{payments.total_and_percent_report(payments)[0]}
+    %footer.blockquote-footer.blockquote-reverse
+      Всего платежей на сумму -
+      %strong
+        #{payments.total_and_percent_report(payments)[1]} 
+      грн.
+    %footer.blockquote-footer.blockquote-reverse
+      Всего новых подключений -
+      %strong
+        #{payments.total_new_connection_report(payments)[0]} 
+    %footer.blockquote-footer.blockquote-reverse
+      Всего новых подключений на сумму -
+      %strong
+        #{payments.total_new_connection_report(payments)[1]} 
+      грн.
+    %footer.blockquote-footer.blockquote-reverse
+      Процент оператора
+      %strong
+        #{payments.total_and_percent_report(payments)[2]} 
+      грн.
+    %footer.blockquote-footer.blockquote-reverse
+      Дополнительные раходы -
+      %strong
+        #{expences.total_expence_report(expences)}
+      грн.
+
+%h4 Расходы (детально)
+%table.table.table-sm.table-hover
+  %thead
+    %tr
+      %th.text-center Расход
+      %th.text-center Сумма
+      %th.text-center Описание 
+      %th
+  %tbody
+    - expences.each do |expence|
+      %tr
+        %td.text-center
+          = expence.expence
+        %td.text-center
+          = expence.expence_value
+        %td
+          = expence.expence_description
+        %td.text-center
+          = link_to expence, class: 'show_material' do
+            %span.fa.fa-info{"aria-hidden" => "true", 'data-toggle' => 'tooltip', placement: 'left', title: 'Детальная инфомация'} &nbsp
+          = link_to expence, :method => :delete,
+                              :data => { :confirm => 'Точно?.. Уверен?..' } do
+            %span.fa.fa-close{"aria-hidden" => "true", 'data-toggle' => 'tooltip', placement: 'left', title: 'Удалить'}
+
+%br
+%h4 Платежи (детально)
+%table.table.table-sm.table-hover
+  %thead
+    %tr
+      %th.text-center Адрес клиента
+      %th.text-center ФИО клиента
+      %th.text-center Новый?
+      %th.text-center Пополнение
+      %th.text-center Материалы
+      %th.text-center Всего
+
+  %tbody
+    - payments.each do |payment|
+      %tr
+        %td.text-left= payment.client_address
+        %td.text-left= payment.client_name
+        %td.text-center
+          - if payment.client_new_connection?
+            %span.fa.fa-check
+        %td.text-center= payment.client_payment
+        %td.text-center= payment.used_material
+        %td.text-center= payment.payment_total
+        %td
+          = link_to payment do
+            %span.fa.fa-info{'aria-hidden' => 'true', 'data-toggle' => 'tooltip', placement: 'left', title: 'Детальная инфомация'} &nbsp
+          = link_to payment, :method => :delete,
+                             :data => { :confirm => 'Точно?.. Уверен?..' } do
+            %span.fa.fa-close{'aria-hidden' => 'true', 'data-toggle' => 'tooltip', placement: 'left', title: 'Удалить'}

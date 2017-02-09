@@ -1,13 +1,16 @@
 %p#notice= notice
 
 %p
-  %b Title:
+  %b Заголовок:
   = @article.title
 %p
-  %b Article:
+  %b Краткое описание статьи:
+  = @article.article_description
+%p
+  %b Статья:
   = @article.article.html_safe
 %p
-  %b User:
+  %b Пользователь:
   = @article.user.email
 
 = link_to 'Редактировать статью', edit_article_path(@article)

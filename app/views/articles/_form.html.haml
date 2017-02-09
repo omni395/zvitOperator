@@ -12,7 +12,10 @@
         .form-group
           %label
             Текст статьи
-          = f.input :article, :input_html => { :class => "wysi" }, label: 'Текст статьи'
+          = f.input :article,
+                    label: 'Текст статьи',
+                    as: :ckeditor,
+                    input_html: { ckeditor: { toolbar: 'Full' } }
 
-  .form-actions
-    = f.button :submit
+  .container.form-actions
+    = f.button :submit, 'Сохранить', class: 'btn btn-sm'
