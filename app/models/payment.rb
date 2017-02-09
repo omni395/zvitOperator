@@ -53,8 +53,10 @@ class Payment < ApplicationRecord
   def self.total_new_connection_report(period)
     new_connection_length, total_new_connection = 0, 0
     period.each do |report|
-      total_new_connection += report.used_material if report.client_new_connection?
-      new_connection_length += 1
+      if report.client_new_connection?
+        total_new_connection += report.used_material
+        new_connection_length += 1
+      end
     end
     return new_connection_length, total_new_connection
   end
