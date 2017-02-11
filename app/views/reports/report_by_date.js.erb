@@ -1,0 +1,2 @@
+$('.report_by_date_total').empty().append('<%= escape_javascript (render partial: 'reports/report_total', locals: {payments: @payments_by_date, expences: @expences_by_date}).html_safe %>');
+$('.report_by_date_detail').empty().append('<%= escape_javascript (render partial: 'reports/report_detail', locals: {payments: @payments_by_date, expences: @expences_by_date}).html_safe %>');

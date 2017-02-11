@@ -11,6 +11,14 @@
       .col
         .form-group
           %label
+            Краткое описание
+          = f.input :article_description,
+                    label: 'Краткое описание',
+                    as: :text
+    .row
+      .col
+        .form-group
+          %label
             Текст статьи
           = f.input :article,
                     label: 'Текст статьи',

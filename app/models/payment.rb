@@ -39,10 +39,11 @@ class Payment < ApplicationRecord
   # и процентов за период
   #
   def self.total_and_percent_report(period)
-    total_report_today,  percent_report_today = 0, 0.00
-    period.each do |report|
-      total_report_today += report.payment_total
-    end
+    #total_report_today,  percent_report_today = 0, 0.00
+    #period.each do |report|
+    #  total_report_today += report.payment_total
+    #end
+    total_report_today = period.collect(&:payment_total).sum
     percent_report_today = total_report_today * 0.05
     return period.length, total_report_today,  percent_report_today
   end

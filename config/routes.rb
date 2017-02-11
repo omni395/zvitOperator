@@ -19,9 +19,9 @@ Rails.application.routes.draw do
   resources :expences
   resources :articles
   
-  scope :reports do
-    get '/', to: 'reports#index', as: 'reports'
-  end
+  
+  get 'reports', to: 'reports#index'
+  get 'report_by_date', to: 'reports#report_by_date'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

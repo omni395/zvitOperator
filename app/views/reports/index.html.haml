@@ -11,19 +11,26 @@
     %a.nav-link{"data-toggle" => "tab", :href => "#report_week", :role => "tab"} за неделю
   %li.nav-item
     %a.nav-link{"data-toggle" => "tab", :href => "#report_month", :role => "tab"} за месяц
-  %li.nav-item.disable
+  %li.nav-item
     %a.nav-link{"data-toggle" => "tab", :href => "#report_by_date", :role => "tab"} по датам
+
 / Содержание вкладок
 .tab-content
   #report_today.tab-pane.active{:role => "tabpanel"}
     %br
-    = render partial: ('reports/report'), locals: {payments: @payments_today, expences: @expences_today}
+    = render partial: ('reports/report_total'), locals: {payments: @payments_today, expences: @expences_today}
+    %br
+    = render partial: ('reports/report_detail'), locals: {payments: @payments_today, expences: @expences_today}
   #report_week.tab-pane{:role => "tabpanel"}
     %br
-    = render partial: ('reports/report'), locals: {payments: @payments_week, expences: @expences_week}
+    = render partial: ('reports/report_total'), locals: {payments: @payments_week, expences: @expences_week}
+    %br
+    = render partial: ('reports/report_detail'), locals: {payments: @payments_week, expences: @expences_week}
   #report_month.tab-pane{:role => "tabpanel"}
     %br
-    = render partial: ('reports/report'), locals: {payments: @payments_month, expences: @expences_month}
+    = render partial: ('reports/report_total'), locals: {payments: @payments_month, expences: @expences_month}
+    %br
+    = render partial: ('reports/report_detail'), locals: {payments: @payments_month, expences: @expences_month}
   #report_by_date.tab-pane{:role => "tabpanel"}
     %br
-    = render partial: ('reports/report'), locals: {payments: @payments_by_date, expences: @expences_by_date}
+    = render template: ('reports/report_by_date')

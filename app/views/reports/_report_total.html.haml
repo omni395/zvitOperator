@@ -1,0 +1,35 @@
+%blockquote.blockquote
+  .text-justify
+    %span{style: "padding: 0px 10px;"} &nbsp
+    Сумма в кассе (за вычетом процента оператора и дополнительных расходов) - 
+    %strong
+      #{payments.total_and_percent_report(payments)[1] - payments.total_and_percent_report(payments)[2] - expences.total_expence_report(expences)}
+    грн.
+    %footer.blockquote-footer.blockquote-reverse
+      Клиентов за период -
+      %strong
+        #{payments.total_and_percent_report(payments)[0]}
+    %footer.blockquote-footer.blockquote-reverse
+      Всего платежей на сумму -
+      %strong
+        #{payments.total_and_percent_report(payments)[1]} 
+      грн.
+    %footer.blockquote-footer.blockquote-reverse
+      Всего новых подключений -
+      %strong
+        #{payments.total_new_connection_report(payments)[0]} 
+    %footer.blockquote-footer.blockquote-reverse
+      Всего новых подключений на сумму -
+      %strong
+        #{payments.total_new_connection_report(payments)[1]} 
+      грн.
+    %footer.blockquote-footer.blockquote-reverse
+      Процент оператора
+      %strong
+        #{payments.total_and_percent_report(payments)[2]} 
+      грн.
+    %footer.blockquote-footer.blockquote-reverse
+      Дополнительные раходы -
+      %strong
+        #{expences.total_expence_report(expences)}
+      грн.

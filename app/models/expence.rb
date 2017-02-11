@@ -11,10 +11,10 @@ class Expence < ApplicationRecord
   # Подсчет общей суммы расходов то датам
   #
   def self.total_expence_report(period)
-    total_expence = 0
-    period.each do |expence|
-      total_expence += expence.expence_value
-    end
-    return total_expence
+    #total_expence = 0
+    #period.each do |expence|
+    #  total_expence += expence.expence_value
+    #end
+    return period.collect(&:expence_value).sum
   end
 end

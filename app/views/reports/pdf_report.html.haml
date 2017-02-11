@@ -8,24 +8,10 @@
       WildPark оператор
 
 %body
-  %h2{align: 'center'}
-    Отчет за неделю в период с #{(Date.today - 6.day).strftime('%d.%m.%Y')} по #{(Date.today).strftime('%d.%m.%Y')}
+  .pdf_content
+    
 
-  %table{width: '100%', align: 'center', border: '1px dotted #000000'}
-    %tr{align: 'center', background: '#C1D1D8'}
-      %th
-        Всего клиентов:
-      %th
-        Выручка за неделю:
-      %th
-        Процент оператора:
-    %tr{align: 'center'}
-      %td
-        = @report_week.total_and_percent_report(@report_week)[2]
-      %td
-        = @report_week.total_and_percent_report(@report_week)[0]
-      %td
-        = @report_week.total_and_percent_report(@report_week)[1]
+  
 
 %br
 %br
@@ -42,21 +28,5 @@
       WildPark оператор
 
 %body
-  %h2{align: 'center'}
-    Отчет за неделю в период с #{(Date.today - 6.day).strftime('%d.%m.%Y')} по #{(Date.today).strftime('%d.%m.%Y')}
-
-  %table{width: '100%', align: 'center', border: '1px dotted #000000'}
-    %tr{align: 'center', background: '#C1D1D8'}
-      %th
-        Всего клиентов:
-      %th
-        Выручка за неделю:
-      %th
-        Процент оператора:
-    %tr{align: 'center'}
-      %td
-        = @report_week.total_and_percent_report(@report_week)[2]
-      %td
-        = @report_week.total_and_percent_report(@report_week)[0]
-      %td
-        = @report_week.total_and_percent_report(@report_week)[1]
+  .pdf_content
+    = yield(:report_by_date)
